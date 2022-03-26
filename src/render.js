@@ -7,14 +7,6 @@
 //     Все его поведения должны быть направлены
 //     исключительно на обеспечение этой ответственности </p>
 
-
-
-
-
-
-
-
-
 // import React from 'react';
 // import ReactDOM from 'react-dom';
 // import MyApp from "./App";
@@ -33,7 +25,6 @@
 //         document.getElementById('root')
 //     );
 // }
-
 
 // export const rerender =(state)=>{
 //     ReactDOM.render(

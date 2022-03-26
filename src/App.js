@@ -71,8 +71,6 @@ class App extends Component {
                             <Route path={'/Dialogs'} render={() => <DialogContainer />}/>
                             <Route path={'/Profile/:userId?'} render={() => <ProfileContainer/>}/>
 
-
-
                             {/*// <Dialogs  data={props.state.dialogPage}*/}
                             {/*//                                               dispatch={props.dispatch} store={props.store}/>}/>*/}
                             {/*// addMessage={props.addMessage}*/}
@@ -127,7 +125,7 @@ const AppContainer = compose(
 // withRouter (connect ( mapStateToProps,{authThunkCreator}) (App));
 // export default App;
 
-let MyApp = (props) => {
+let MyApp = () => {
     return <React.StrictMode>
         {/*<HashRouter>*/}
         <BrowserRouter basename={process.env.PUBLIC_URL}>
