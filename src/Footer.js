@@ -1,7 +1,6 @@
 import React from 'react';
 
-const Footer = () => {
-    return(
+const Footer = () => (
         <div>
             <form>
                 <input type={'search'}/>
@@ -9,5 +8,4 @@ const Footer = () => {
             </form>
         </div>
     )
-}
 export default Footer
