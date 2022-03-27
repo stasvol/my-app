@@ -4,7 +4,7 @@ import {connect, Provider} from "react-redux";
 import {compose} from "redux";
 
 import store from "./Redux/reduxStore";
-import {withLazySuspense} from "./Hoc/withLazySuspense";
+import {withLazySuspense} from "./Hock/withLazySuspense";
 import {initializeApp} from "./Redux/app_reducer";
 import Music from './Components/Music/Music';
 import NavContainer from "./Components/Nav/NavContainer";

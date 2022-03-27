@@ -6,9 +6,6 @@ import SettingMessage from "./SettingMessage";
 import {connect} from "react-redux";
 // import {addNewPostAC, newPostMesTextAC} from "./State";
 
-
-
-
 // const SettingMessageContainer = (props) => {
 //
 //     const changeText = (textNew) =>{
@@ -39,6 +36,7 @@ import {connect} from "react-redux";
           newPostMesText: state.posts.newPostMesText
       }
     }
+
     const mapDispatchToProps = (dispatch) =>{
             return {
                 changeText: (textNew) => {

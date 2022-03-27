@@ -5,7 +5,7 @@ import MyContext from "../../MyContext";
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 import Dialog from "./Dialog";
-import {withAuthRedirect} from "../../Hoc/withAuthRedirect";
+import {withAuthRedirect} from "../../Hock/withAuthRedirect";
 import {compose} from "redux";
 
 

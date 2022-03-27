@@ -2,12 +2,12 @@
 import SetReducer from "./Set_reducers/setReducer";
 import SetMesReducer from "./Set_reducers/setMesreducer";
 
-const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE';
-const UPDATE_NEW_TEXT = 'UPDATE_NEW_TEXT';
-const NEW_POST_MES_TEXT = 'NEW_POST_MES_TEXT';
-const ADD_NEW_POST = 'ADD_NEW_POST';
+// const ADD_NEW_MESSAGE = 'ADD_NEW_MESSAGE';
+// const UPDATE_NEW_TEXT = 'UPDATE_NEW_TEXT';
+// const NEW_POST_MES_TEXT = 'NEW_POST_MES_TEXT';
+// const ADD_NEW_POST = 'ADD_NEW_POST';
 
-let Store = {
+const Store = {
 
         rerender() {
         console.log("State changed")
@@ -104,5 +104,5 @@ let Store = {
 //     return {type: ADD_NEW_POST}
 // }
 
-    export default Store
+export default Store
 

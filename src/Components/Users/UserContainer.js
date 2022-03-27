@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {compose} from "redux";
 import {connect} from 'react-redux';
 
@@ -8,7 +8,7 @@ import {
     unfollow, unFollowThunkCreator,} from "../../Redux/user_reducer";
 import UsersF from './UserF';
 import Preloader from "../Common/preloader/preloader";
-import {withAuthRedirect} from "../../Hoc/withAuthRedirect";
+import {withAuthRedirect} from "../../Hock/withAuthRedirect";
 import {
     currentPageSelector, disableButtonSector,
     getUsersSelector, isLoadingSelector,
@@ -16,37 +16,33 @@ import {
     totalUsersCountSelector,
 } from "../../Redux/users_selectors";
 
+const UsersApiContainer = (props) => {
 
-class UsersApiContainer extends React.Component {
+    // componentDidMount() {
+    //
+    //     this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
+    //
+    // }
+    useEffect(()=>{
+        props.getUsersThunkCreator(props.currentPage, props.pageSize)
+    },[props.getUsersThunkCreator,props.currentPage, props.pageSize])
 
-    componentDidMount() {
 
-        this.props.getUsersThunkCreator(this.props.currentPage, this.props.pageSize)
-
+   const onChangePage = (pageNumber) => {
+        props.getUsersThunkCreator(pageNumber)
     }
 
-    onChangePage = (pageNumber) => {
-
-        this.props.getUsersThunkCreator(pageNumber)
-
-    }
-
-
-    render() {
-
-        return (
+    return (
             <>
-                {this.props.isLoading ? <Preloader/> : null}
-                <UsersF onChangePage={this.onChangePage} currentPage={this.props.currentPage}
-                        totalUsersCount={this.props.totalUsersCount} pageSize={this.props.pageSize}
-                        users={this.props.users} follow={this.props.follow} unfollow={this.props.unfollow}
-                        disableButtonFol={this.props.disableButtonFol} disableButton={this.props.disableButton}
-                        FollowThunkCreator={this.props.FollowThunkCreator}
-                        unFollowThunkCreator={this.props.unFollowThunkCreator} />
+                {props.isLoading ? <Preloader/> : null}
+                <UsersF onChangePage={onChangePage} currentPage={props.currentPage}
+                        totalUsersCount={props.totalUsersCount} pageSize={props.pageSize}
+                        users={props.users} follow={props.follow} unfollow={props.unfollow}
+                        disableButtonFol={props.disableButtonFol} disableButton={props.disableButton}
+                        FollowThunkCreator={props.FollowThunkCreator}
+                        unFollowThunkCreator={props.unFollowThunkCreator} />
             </>
         )
-
-    }
 }
 
 const mapStateToProps = (state) => {

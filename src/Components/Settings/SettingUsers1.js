@@ -10,7 +10,8 @@
 //     componentDidMount() {
 //         // if (this.props.users.users.length === 0) {
 //         //     // (function () {
-//             axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSizeSet}&page=${this.props.currentPageSet}`).then(response => {
+//             axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=
+//             ${this.props.pageSizeSet}&page=${this.props.currentPageSet}`).then(response => {
 //
 //                 this.props.settingAddUser(response.data.items)
 //                 this.props.settingUserTotalCount(response.data.totalCount)
@@ -25,11 +26,13 @@
 //     //
 //     //     props.settingAddUser([
 //     //             {
-//     //                 id: 1, photoUrl: "https://i.pinimg.com/originals/53/08/1c/53081c48b54b7be2805a0b2ad5470735.jpg",
+//     //                 id: 1, photoUrl: "https://i.pinimg
+//     .com/originals/53/08/1c/53081c48b54b7be2805a0b2ad5470735.jpg",
 //     //                 followed: true, name: 'Andre', status: "I'm  Cool"
 //     //             },
 //     //             {
-//     //                 id: 2, photoUrl: "https://i.pinimg.com/originals/b4/98/f9/b498f91f653cd9ed231209b12fac64c7.jpg",
+//     //                 id: 2, photoUrl: "https://i.pinimg
+//     .com/originals/b4/98/f9/b498f91f653cd9ed231209b12fac64c7.jpg",
 //     //                 followed: false, name: 'Tom', status: "I'm  authorised"
 //     //             },
 //     //         ]
@@ -39,7 +42,9 @@
 //
 //          this.props.SetCurPage(currentPageSet)
 //
-//          axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSizeSet}&page=${currentPageSet}`).then(response => {
+//          axios.get(`https://social-network.samuraijs
+//          .com/api/1.0/users?count=${this.props.pageSizeSet}&
+//          page=${currentPageSet}`).then(response => {
 //
 //              this.props.settingAddUser(response.data.items)
 //              // this.props.settingUserTotalCount(response.data.totalCount)
@@ -75,7 +80,8 @@
 //     //             <div className={classes.marg}>
 //     //             {
 //     //                 pagesSet.map((p,i) =>{
-//     //                     return  <span onClick={(e)=>{this.onCurPageSet(p)}} key={i} className={ this.props.currentPageSet === p
+//     //                     return  <span onClick={(e)=>{this.onCurPageSet(p)}}
+//     key={i} className={ this.props.currentPageSet === p
 //     //                         ?  classes.active
 //     //                         : classes.pag}>{p}</span>
 //     //                 })
@@ -94,7 +100,8 @@
 //     //
 //     //                     return <div key={i}>
 //     //                         <div>
-//     //                             <img className={classes.foto} src={user.photos.small ? user.photos.small : Photo}
+//     //                             <img className={classes.foto}
+//     src={user.photos.small ? user.photos.small : Photo}
 //     //                                  alt={'photo'}/>
 //     //                         </div>
 //     //                         <div>

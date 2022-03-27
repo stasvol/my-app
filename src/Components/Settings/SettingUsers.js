@@ -9,10 +9,10 @@ import SetPage from "./SetPagePaginator"
 
 const SettingUsers = ({...props}) => {
 
-
-//           if (props.users.users.length === 0) {
+    //           if (props.users.users.length === 0) {
 //               // (function () {
-//               axios.get('https://social-network.samuraijs.com/api/1.0/users?count=5').then(response => {
+//               axios.get('https://social-network
+//               .samuraijs.com/api/1.0/users?count=5').then(response => {
 //
 //                   props.settingAddUser(response.data.items)
 //
@@ -28,11 +28,13 @@ const SettingUsers = ({...props}) => {
 //         //
 //         //     props.settingAddUser([
 //         //             {
-//         //                 id: 1, photoUrl: "https://i.pinimg.com/originals/53/08/1c/53081c48b54b7be2805a0b2ad5470735.jpg",
+//         //                 id: 1, photoUrl: "https://i.pinimg
+//         .com/originals/53/08/1c/53081c48b54b7be2805a0b2ad5470735.jpg",
 //         //                 followed: true, name: 'Andre', status: "I'm  Cool"
 //         //             },
 //         //             {
-//         //                 id: 2, photoUrl: "https://i.pinimg.com/originals/b4/98/f9/b498f91f653cd9ed231209b12fac64c7.jpg",
+//         //                 id: 2, photoUrl: "https://i.pinimg
+//         .com/originals/b4/98/f9/b498f91f653cd9ed231209b12fac64c7.jpg",
 //         //                 followed: false, name: 'Tom', status: "I'm  authorised"
 //         //             },
 //         //         ]
@@ -44,7 +46,9 @@ const SettingUsers = ({...props}) => {
 //
 //         return <div key={i}>
 //                 <div>
-//                     <img className={classes.foto} src={user.photos.small ? user.photos.small : Photo} alt={'photo'}/>
+//                     <img className={classes.foto} src={user.photos.small
+//                     ? user.photos.small
+//                     : Photo} alt={'photo'}/>
 //                 </div>
 //                 <div>
 //                     <span><b>{user.name}</b></span>
@@ -88,9 +92,6 @@ const SettingUsers = ({...props}) => {
 //         pagesSet.push(i)
 //     }
 
-
-
-
     return (
         <div>
             {/*<Loading/>*/}
@@ -102,7 +103,8 @@ const SettingUsers = ({...props}) => {
             {/*<div className={classes.marg}>*/}
             {/*    {*/}
             {/*           pagesSet.map((p,i) =>{*/}
-            {/*            return  <span onClick={(e)=>{props.onCurPageSet(p)}} key={i} className={ props.currentPageSet === p*/}
+            {/*            return  <span onClick={(e)=>{props.onCurPageSet(p)}}
+             key={i} className={ props.currentPageSet === p*/}
             {/*                ?  classes.active*/}
             {/*                : classes.pag}>{p}</span>*/}
             {/*        })*/}

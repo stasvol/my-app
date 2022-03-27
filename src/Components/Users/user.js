@@ -4,13 +4,13 @@ import {NavLink} from "react-router-dom";
 import photo from "../../Photo/Images/user.png";
 import classes from "./user.module.css";
 
-const User = ({user:{id,photos,followed,name,status},disableButton,unFollowThunkCreator,FollowThunkCreator}) => {
+const User = ({user:{id,photos,followed,name,status},disableButton,
+                  unFollowThunkCreator,FollowThunkCreator}) => {
  const handleUnfollow = () => unFollowThunkCreator(id)
  const handleFollow = () => FollowThunkCreator(id)
     return (
 
         <div>
-             <div>
                     <div>
                         {/*<img src={user.photoUrl} className={classes.photo}/>*/}
                         <NavLink to={'/Profile/' + id}>
@@ -36,12 +36,8 @@ const User = ({user:{id,photos,followed,name,status},disableButton,unFollowThunk
                     <div>{"user.location.country"}</div>
                     <div>{"user.location.city"}</div>
 
-                </div>)
-            }
         </div>
     )
-
-
 }
 
 export default User
