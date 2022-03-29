@@ -1,11 +1,8 @@
 import React from 'react';
-import classes from './Setting.module.css';
-import {createRef} from "react";
-import state, {addNewMessage, addNewMessageAC, addNewText, updateNewText, updateNewTextAC} from './Set_reducers/setReducer'
-
-import Setting from "./Setting";
 import {connect} from "react-redux";
 
+import {addNewMessageAC, updateNewTextAC} from './Set_reducers/setReducer'
+import Setting from "./Setting";
 
 // const SettingContainer = (props) => {
 //
@@ -65,10 +62,11 @@ import {connect} from "react-redux";
 //
 //     }
 
-  const  mapStateToProps = (state) =>{
+  const  mapStateToProps = ({message:{message,newMessage}}) =>{
        return {
-           state: state.message,
-           newMessage: state.message.newMessage
+           // state: state.message,
+           message,
+           newMessage
        }
 
     }

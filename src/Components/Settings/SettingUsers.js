@@ -1,13 +1,16 @@
 import React from 'react'
 import classes from './Setting.module.css';
-import  axios from "axios";
+import axios from "axios";
 import Photo from './../../Photo/Images/avatar.png'
 import Loading from "./Loading";
 import {NavLink} from "react-router-dom";
 import SetPage from "./SetPagePaginator"
 
 
-const SettingUsers = ({...props}) => {
+const SettingUsers = ({
+                          countUsersSet, pageSizeSet, countPagesSet, onCurPageSet,
+                          currentPageSet, users, setUnFollow, setFollow
+                      }) => {
 
     //           if (props.users.users.length === 0) {
 //               // (function () {
@@ -97,9 +100,9 @@ const SettingUsers = ({...props}) => {
             {/*<Loading/>*/}
             {/*<button onClick={setAddUserButton}>ADD USERS</button>*/}
             <h3>USERS</h3>
-            <SetPage countUsersSet={props.countUsersSet} pageSizeSet={props.pageSizeSet}
-                     countPagesSet={props.countPagesSet} onCurPageSet={props.onCurPageSet}
-                     currentPageSet={props.currentPageSet}  />
+            <SetPage countUsersSet={countUsersSet} pageSizeSet={pageSizeSet}
+                     countPagesSet={countPagesSet} onCurPageSet={onCurPageSet}
+                     currentPageSet={currentPageSet}/>
             {/*<div className={classes.marg}>*/}
             {/*    {*/}
             {/*           pagesSet.map((p,i) =>{*/}
@@ -120,49 +123,44 @@ const SettingUsers = ({...props}) => {
             {/*</div>*/}
 
             {
-                props.users.users.map((user, i) => {
+                users.users.map(({id,photos,fullName,followed,status}, i) => {
+                   const handleSetUnFollow = () => setUnFollow(id)
+                   const handleSetFollow = () => setFollow(id)
 
-                    return <div key={i}>
-                        <div>
-                           <NavLink to={'/News/'+user.id}>
-                            <img className={classes.foto} src={user.photos.small ? user.photos.small : Photo}
-                                 alt={'photo'}/>
-                           </NavLink>
-                            {/*< img src={props.prof.photos.small} alt="image"/>*/}
+                    return (
+                        <div key={i}>
+                            <div>
+                                <NavLink to={'/News/'${id}}>
+                                    <img className={classes.foto} src={photos.small ? photos.small : Photo}
+                                         alt={'photo'}/>
+                                </NavLink>
+                                {/*< img src={props.prof.photos.small} alt="image"/>*/}
+                            </div>
+
+                            <div>
+                                <span><b>{fullName}</b></span>
+                                <div>{new Date().toLocaleDateString()}</div>
+                            </div>
+                            <div>
+                                <span>status: <i>{status}</i></span>
+                            </div>
+                            <div>
+                                {
+                                    followed
+                                        ? <button onClick={handleSetUnFollow}>
+                                            unFollow</button>
+                                        : <button onClick={handleSetFollow}>
+                                            Follow</button>
+                                }
+
+                            </div>
                         </div>
-
-                        <div>
-                            <span><b>{user.fullName}</b></span>
-                            <div>{new Date().toLocaleDateString()}</div>
-                        </div>
-                        <div>
-                            <span>status: <i>{user.status}</i></span>
-                        </div>
-                        <div>
-                            {
-                                user.followed
-                                ? <button onClick={() => {
-                                    props.setUnFollow(user.id)
-                                }}>unFollow</button>
-                                : <button onClick={() => {
-                                    props.setFollow(user.id)
-                                }}>Follow</button>
-                            }
-
-                        </div>
-                    </div>
-
-
+                    )
                 })
             }
-
-
             {/*{addSetingUser}*/}
-
         </div>
     )
-
 }
 
-
-export default  SettingUsers
+export default SettingUsers

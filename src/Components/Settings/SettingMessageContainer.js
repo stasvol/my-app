@@ -1,9 +1,9 @@
 import React from 'react';
-import classes from './Setting.module.css';
-import {addNewPostAC, newPostMesTextAC} from "./Set_reducers/setMesreducer";
-import {createRef} from "react";
-import SettingMessage from "./SettingMessage";
 import {connect} from "react-redux";
+
+import {addNewPostAC, newPostMesTextAC} from "./Set_reducers/setMesreducer";
+import SettingMessage from "./SettingMessage";
+
 // import {addNewPostAC, newPostMesTextAC} from "./State";
 
 // const SettingMessageContainer = (props) => {
@@ -29,13 +29,7 @@ import {connect} from "react-redux";
 //
 //     }
 
-    const mapStateToPros = (state) => {
-
-      return {
-          posts: state.posts.posts,
-          newPostMesText: state.posts.newPostMesText
-      }
-    }
+    const mapStateToPros = ({posts:{posts,newPostMesText}}) => ({posts, newPostMesText})
 
     const mapDispatchToProps = (dispatch) =>{
             return {
