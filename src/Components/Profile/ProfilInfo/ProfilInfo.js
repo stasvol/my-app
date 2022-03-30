@@ -1,22 +1,20 @@
-import React from "react";
-import classes from './ProfilInfo.module.css';
+import React, {useState} from "react";
+
 import Preloader from "../../Common/preloader/preloader";
-import smail from "../../../Photo/Images/smail.png"
-import ProfilStatus from "./ProfilStatus";
-import ProfilStatusWithHook from "./ProfilStatusWithHook";
-import kot from "../../../Photo/Images/kot.png"
 import ProfilStatusHook from "./ProfilStatusWithHook";
-import {useState} from "react";
 import ProfDataForm from "./ProfDataForm";
+
+import smail from "../../../Photo/Images/smail.png"
+import kot from "../../../Photo/Images/kot.png"
+import classes from './ProfilInfo.module.css';
 
 
 const ProfInfo = ({...props}) => {
 
     const [editMode, setEditMode] = useState(false);
 
-    if (!props.profile) {
-        return <Preloader/>
-    }
+    if (!props.profile) return <Preloader/>
+
     const onPhotoChange = (e) => {
         if (e.target.files.length) {
             props.savePhoto(e.target.files[0])

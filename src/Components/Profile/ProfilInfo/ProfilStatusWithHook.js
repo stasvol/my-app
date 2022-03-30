@@ -1,45 +1,37 @@
 import React from "react";
+
+import {useProfilStatusHook} from "../../../Hook/useProfilStatusHook";
+
 import classes from './ProfilInfo.module.css';
-import {useState,useEffect} from "react";
 
+const  ProfilStatusHook = ({status,updateStatus}) =>{
 
-
-
-const  ProfilStatusHook = (props) =>{
-
-    const [editMode, setEditMode] = useState(false);
-    const [status, setStatus] = useState(props.status);
-
-    useEffect(() => {
-
-        setStatus(props.status)
-    },[props.status]);
-
-    const activeEditMode = () => {
-
-        setEditMode(true);
-
-    }
-
-
-    const deActiveEditMode = () => {
-
-         setEditMode(false);
-
-        props.updateStatus(status)
-
-    }
-    const changeStatus = (e) => {
-
-        setStatus(e.target.value);
-    }
-
+    // const [editMode, setEditMode] = useState(false);
+    // const [status, setStatus] = useState(status);
+    //
+    // useEffect(() => {
+    //     setStatus(status)
+    // },[status]);
+    //
+    // const activeEditMode = () => {
+    //     setEditMode(true);
+    // }
+    //
+    // const deActiveEditMode = () => {
+    //     setEditMode(false);
+    //     updateStatus(status)
+    // }
+    //
+    // const changeStatus = (e) => {
+    //     setStatus(e.target.value);
+    // }
+    const {editMode,activeEditMode,deActiveEditMode,changeStatus} = useProfilStatusHook(status,updateStatus)
         return (
             <div>
                 {!editMode
                     ?
                     <div className={classes.status}>
-                        <span onDoubleClick={activeEditMode} ><i>STATUS :</i>  {props.status} </span>
+                        <span onDoubleClick={activeEditMode} ><i>STATUS :</i>  {status} </span>
                     </div>
 
                     :
@@ -51,6 +43,5 @@ const  ProfilStatusHook = (props) =>{
         )
 
 }
-
 
 export default ProfilStatusHook

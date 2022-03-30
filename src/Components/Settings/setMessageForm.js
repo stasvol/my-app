@@ -6,11 +6,7 @@ import {maxLength30, minLength3} from "./validatorSetting";
 
 import classes from "./Setting.module.css";
 
-const SetMessageForm = (props) =>{
-
-    const {handleSubmit} = props
-
-    return(
+const SetMessageForm = ({handleSubmit}) => (
         <form onSubmit={handleSubmit}>
             <div>
                 <Field  name={'newPostMesText'} component={Textarea} placeholder={'add post2'}
@@ -22,7 +18,6 @@ const SetMessageForm = (props) =>{
 
         </form>
     )
-}
 export const SetMessageFormRedux = reduxForm({
     form: 'setTwo'
 })(SetMessageForm);

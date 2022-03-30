@@ -1,96 +1,100 @@
-import React, {Component} from 'react';
+import React from 'react';
+import {withRouter} from "react-router-dom";
+import {connect} from "react-redux";
+import {compose} from "redux";
+
 import Profile from "./Profile";
 import {
     getStatus, profileThunkCreator, savePhoto,
-    setUsersProfile, updateStatus, saveProfile, editProfile
+    setUsersProfile, updateStatus, editProfile
 } from "../../Redux/prof_reducer";
-import {connect} from "react-redux";
-import {withRouter} from "react-router-dom"
-import {compose} from "redux";
 import {withAuthRedirect} from "../../Hock/withAuthRedirect";
+import {useProfileContainer} from "../../Hook/useProfileContainer";
 
+const ProfileContainer = ({match,authorisedUserId,history,
+                              getUsers,getStatus,isAuth,profile,
+                              status,updateStatus,savePhoto,...props}) => {
 
-class ProfileContainer extends React.Component{
+    const {userUpdateProfile} = useProfileContainer(match,authorisedUserId,getUsers,getStatus)
 
-     userUpdateProfile () {
-         let userId = this.props.match.params.userId;
+    // const userUpdateProfile = () => {
+    //      let userId = match.params.userId;
+    //
+    //      if (!userId){
+    //
+    //          userId = authorisedUserId
+    //          if (!userId) {
+    //              userId = history.push('/login')
+    //          }
+    //      }
+    //      getUsers(userId)
+    //      getStatus(userId);
+    // }
+    //
+    // // componentDidMount() {
+    // //
+    // //     this.userUpdateProfile()
+    // //     //  let userId = this.props.match.params.userId;
+    // //     //
+    // //     //  if (!userId){
+    // //     //
+    // //     //      userId = this.props.authorisedUserId
+    // //     //      // userId= 14585;
+    // //     //      // <img src={'https://goodhostel.lviv.ua/sites/default/files/clAvHWVG4GE.jpg'}/>
+    // //     //      //     // 1049;
+    // //     //          // 14585;
+    // //     //      if (!userId) {
+    // //     //          userId = this.props.history.push('/login')
+    // //     //      }
+    // //     //  }
+    // //     //  this.props.getUsers(userId)
+    // //     // // this.props.profileThunkCreator(userId);
+    // //     //  this.props.getStatus(userId);
+    // //     //  // this.props.updateStatusThunkCreator(status);
+    // //     //
+    // //     // //  addAxios.getProfile(userId)
+    // //     // // // axios.get(`https://social-network.samuraijs.com/api/1.0/Profile/`+userId)
+    // //     // //
+    // //     // //     .then(response => {
+    // //     // //
+    // //     // //     this.props.setUsersProfile(response.data);
+    // //     // //
+    // //     // // })
+    // // }
+    // useEffect(()=>{
+    //     userUpdateProfile()
+    // },[match.params.userId])
 
-         if (!userId){
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //
+    //    if (this.props.match.params.userId !== prevProps.match.params.userId){
+    //           this.userUpdateProfile()
+    //    }
+    //
+    //     // let userId = this.props.match.params.userId;
+    //     //
+    //     // if (!userId){
+    //     //
+    //     //     userId = this.props.authorisedUserId
+    //     //     if (!userId) {
+    //     //         userId = this.props.history.push('/login')
+    //     //     }
+    //     // }
+    //     // this.props.getUsers(userId)
+    //     // this.props.getStatus(userId);
+    // }
 
-             userId = this.props.authorisedUserId
-             if (!userId) {
-                 userId = this.props.history.push('/login')
-             }
-         }
-         this.props.getUsers(userId)
-         this.props.getStatus(userId);
-    }
-
-    componentDidMount() {
-
-        this.userUpdateProfile()
-        //  let userId = this.props.match.params.userId;
-        //
-        //  if (!userId){
-        //
-        //      userId = this.props.authorisedUserId
-        //      // userId= 14585;
-        //      // <img src={'https://goodhostel.lviv.ua/sites/default/files/clAvHWVG4GE.jpg'}/>
-        //      //     // 1049;
-        //          // 14585;
-        //      if (!userId) {
-        //          userId = this.props.history.push('/login')
-        //      }
-        //  }
-        //  this.props.getUsers(userId)
-        // // this.props.profileThunkCreator(userId);
-        //  this.props.getStatus(userId);
-        //  // this.props.updateStatusThunkCreator(status);
-        //
-        // //  addAxios.getProfile(userId)
-        // // // axios.get(`https://social-network.samuraijs.com/api/1.0/Profile/`+userId)
-        // //
-        // //     .then(response => {
-        // //
-        // //     this.props.setUsersProfile(response.data);
-        // //
-        // // })
-    }
-    componentDidUpdate(prevProps, prevState, snapshot) {
-
-       if (this.props.match.params.userId !== prevProps.match.params.userId){
-              this.userUpdateProfile()
-       }
-
-        // let userId = this.props.match.params.userId;
-        //
-        // if (!userId){
-        //
-        //     userId = this.props.authorisedUserId
-        //     if (!userId) {
-        //         userId = this.props.history.push('/login')
-        //     }
-        // }
-        // this.props.getUsers(userId)
-        // this.props.getStatus(userId);
-    }
-
-    render () {
-             // if (!this.props.isAuth) return <Redirect to={'/login'} />
+             if (!isAuth) return <Redirect to={'/login'} />
              return (
-                 <div >
-                    <Profile  {...this.props} profile={this.props.profile}
-                              status={this.props.status} updateStatus={this.props.updateStatus}
-                              isOwner={!this.props.match.params.userId}
-                              savePhoto={this.props.savePhoto}/>
+                 <div>
+                    <Profile  {...props} profile={profile}
+                              status={status} updateStatus={updateStatus}
+                              isOwner={!match.params.userId}
+                              savePhoto={savePhoto}/>
                               {/*saveProfile={this.props.saveProfile}*/}
-
                  </div>
              )
-         }
 }
-
-//       HOC
 
 // let RedirectComponent = (props) => {
 //
@@ -104,21 +108,14 @@ class ProfileContainer extends React.Component{
 //     isAuth: state.auth.isAuth
 // });
 // AuthRedirectComponent = connect(mapStateToPropsRedirect) (AuthRedirectComponent)
-
-let mapStateToProps = (state) => ({
-    state: state.profPage,
-    profile: state.profPage.profile,
-    status: state.profPage.status,
-    authorisedUserId: state.auth.id,
-    isAuth: state.auth.isAuth,
-
-
-
+const mapStateToProps = ({profPage:{profile,status},auth:{authorisedUserId,isAuth}}) => ({
+    // state: state.profPage,
+    profile,
+    status,
+    authorisedUserId,
+    isAuth,
 });
-
- // let WithRouterProfileContainer = withRouter(AuthRedirectComponent)
-
-
+// let WithRouterProfileContainer = withRouter(AuthRedirectComponent)
 // export default connect (mapStateToProps, {setUsersProfile,profileThunkCreator}) (WithRouterProfileContainer);
 export default compose(
     connect (mapStateToProps, {setUsersProfile,

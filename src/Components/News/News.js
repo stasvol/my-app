@@ -4,7 +4,7 @@ import kot from './../../Photo/Images/kot.png'
 import photo from "../../Photo/Images/user.png";
 import {NavLink} from "react-router-dom";
 import axios from "axios";
-import {newDelUnfollow, newPostFollow} from "../Settings/SetApiAxios";
+import {newDelUnfollow, newPostFollow} from "../Settings/Api/SetApiAxios";
 import {setFollowThunk} from "../Settings/Set_reducers/setUserReducer";
 import userGirl from './../../Photo/Images/user2.png'
 import NewsStatus from "./newsStatus";

@@ -1,8 +1,9 @@
 import React from 'react'
 import  {reduxForm} from "redux-form";
-import classes from "./ProfilInfo.module.css";
-import smail from "../../../Photo/Images/smail.png";
+
 import {createField, Input, Textarea} from "../../Common/FormControl/formComponent";
+
+import classes from "./ProfilInfo.module.css";
 
 
 
@@ -31,7 +32,8 @@ const ProfDataForm = ({...props}) => {
         {/*        <img className={classes.smail} src={smail} alt={'image'}/>*/}
             </div>
         {/*    {props.profile.lookingForAJob &&*/}
-            <div><b>My professional skills</b> : {createField( "My professional skills", "lookingForAJobDescription",
+            <div><b>My professional skills</b> :
+                {createField( "My professional skills", "lookingForAJobDescription",
                 [],  Textarea)}
         {/*        {props.profile.lookingForAJobDescription}</div>{/*    }*/}
             </div>

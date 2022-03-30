@@ -1,6 +1,6 @@
 import React from 'react';
 import { create } from "react-test-renderer";
-import ProfilStatus from "./ProfilStatus";
+import ProfilStatus from "../src/Components/Profile/ProfilInfo/ProfilStatus";
 
 
 describe("ProfilStatus component", () => {

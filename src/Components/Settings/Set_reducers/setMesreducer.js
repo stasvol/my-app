@@ -3,7 +3,6 @@ const ADD_NEW_POST = 'ADD_NEW_POST';
 
 const initialState = {
     posts: [
-
         {id: 1, post: 'Hello React', },
         {id: 2, post: 'Hi, JS', }
     ],
@@ -60,6 +59,5 @@ const initialState = {
 export const newPostMesTextAC = (textNew) =>({type:NEW_POST_MES_TEXT, textNew})
 
 export const addNewPostAC = (newPostMesText) => ({type: ADD_NEW_POST,newPostMesText})
-
 
  export default SetMesReducer

@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import {settingApi} from "../Components/Settings/SetApiAxios";
+import {settingApi} from "../Components/Settings/Api/SetApiAxios";
 
 export const useSettingUsersContainer = (setIsLoad,pageSizeSet,currentPageSet,settingAddUser,
                                          settingUserTotalCount,SetCurPage) => {

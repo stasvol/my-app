@@ -1,19 +1,16 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ProfInfo from './ProfilInfo/ProfilInfo'
 import ProfAvatar from './ProfAvatar/ProfAvatar'
 import MyPostContainer from "./MyPosts/MyPostContainer";
 
+const Profile = ({profile,status,updateStatus,isOwner,savePhoto,editProfile}) => (
 
-const Profile = (props) => {
-
-    return (
-
-        <div >
-            <ProfInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus}
-                      isOwner={props.isOwner} savePhoto={props.savePhoto}
-                      editProfile={props.editProfile}/>
+        <div>
+            <ProfInfo profile={profile} status={status} updateStatus={updateStatus}
+                      isOwner={isOwner} savePhoto={savePhoto}
+                      editProfile={editProfile}/>
             <ProfAvatar />
-            <MyPostContainer  PostData={props.state.PostData} newText={props.state.newText}  post={'MY POSTS'} />
+            <MyPostContainer />
 
             {/*<MyPost PostData={props.state.PostData} newText={props.state.newText} dispatch={props.dispatch}*/}
             {/*        addPost={props.addPost}  addChangeText={props.addChangeText}*/}
@@ -21,7 +18,5 @@ const Profile = (props) => {
 
         </div>
     )
-}
-
 
 export default Profile

@@ -1,12 +1,9 @@
 import React from 'react';
-import classes from './MyPost.module.css';
-import Post from "./Post/Post";
-import {addChangeText, addNewPostActionCreator, addPost, handleChangeActionCreator} from '../../../Redux/prof_reducer';
-import MyPost from "./MyPost";
-// import MyContext from "../../../MyContext";
 import {connect} from "react-redux";
 
-
+import {addChangeText, addPost} from '../../../Redux/prof_reducer';
+import MyPost from "./MyPost";
+// import MyContext from "../../../MyContext";
 // const MyPostContainer1 = (props) => {
 //     // let newPostText = React.createRef();
 //
@@ -52,13 +49,11 @@ import {connect} from "react-redux";
 //
 // export default MyPostContainer1
 
-const mapStateToProps = (state) =>{
-    return{
-        state: state.profPage.PostData,
-        newText:  state.profPage.newText,
-        post:'MY POSTS'
-    }
-}
+const mapStateToProps = ({profPage:{PostData,newText},post}) => ({
+        PostData,
+        newText,
+        post,
+})
 
 const mapDispatchToProps = (dispatch) =>{
     return{
@@ -74,6 +69,5 @@ const mapDispatchToProps = (dispatch) =>{
 }
 
 const MyPostContainer = connect(mapStateToProps,mapDispatchToProps) (MyPost);
-
 
 export default MyPostContainer

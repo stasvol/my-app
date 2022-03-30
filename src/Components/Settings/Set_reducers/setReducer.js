@@ -10,12 +10,11 @@ let initialState = {
     newMessage: 'Hello Friend',
 }
 
-
- const SetReducer = (state=initialState,action) => {
+const SetReducer = (state=initialState,action) => {
 
        switch (action.type) {
-           case ADD_NEW_MESSAGE :
 
+           case ADD_NEW_MESSAGE :
                const newMes = {
                    id: 3, message: action.newMessage, like: 1,
                }
@@ -25,8 +24,6 @@ let initialState = {
                    // state.message.push(newMes)
                    newMessage: ''
                }
-
-
                // return  state
 
            case UPDATE_NEW_TEXT:
@@ -34,19 +31,16 @@ let initialState = {
                    ...state,
                    newMessage: action.newTextMes
                }
+
            case DELETE_MESSAGE:
                return{
                    ...state,
                    message: state.message.filter(mes => mes.id !== action.userId  )
                }
-
                // state.newMessage = action.newTextMes
                // return state
-
            default:
-
                return state
-
        }
      // if (action.type === ADD_NEW_MESSAGE) {
      //     const newMes = {

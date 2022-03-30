@@ -10,7 +10,7 @@ import siteBarReducer from './sitebar_reducer';
 
 let store = {
 
-    _state: {
+    state: {
 
         dialogPage: {
             DialogData: [
@@ -84,38 +84,31 @@ let store = {
     },
 
     getState() {
-        return this._state;
+        return this.state;
     },
 
-    _subscriber() {
+    subscriber() {
         console.log('state  changed');
     },
-
-
-       subscribe(observer) {                         //observer pattern наблюдатель
-        this._subscriber = observer;
+        subscribe(observer) {                         //observer pattern наблюдатель
+        this.subscriber = observer;
 
      },
     //  Method   DISPATCH
 
     dispatch(action) {// action -> object: type:'' +  data( newText, ... )
 
-        this._state.dialogPage = dialogReducer(this._state.dialogPage, action);
-        this._state.postPage = postReducer(this._state.postPage, action);
-        this._state.siteBar = siteBarReducer(this._state.siteBar, action);
+        this.state.dialogPage = dialogReducer(this.state.dialogPage, action);
+        this.state.postPage = postReducer(this.state.postPage, action);
+        this.state.siteBar = siteBarReducer(this.state.siteBar, action);
 
-        this._subscriber(this._state);
-
-    },
-
+        this.subscriber(this.state);
+        },
 }
-
 
 export default store
 
-window.store = store;
-// __________________________________________________________________________________________________________________
-//
+// window.store = store;
 //  Create  ActionCreator   REDUCE;
 //
 // dispatch(action) {

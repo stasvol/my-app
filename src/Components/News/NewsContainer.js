@@ -14,7 +14,7 @@ import {
 import axios from "axios";
 import {NavLink, Redirect, withRouter} from "react-router-dom";
 import {newAuthThunk, setAuthReducer, setAuthReducerAcCr} from "../Settings/Set_reducers/setAuthReducer";
-import {newAuthMeApi, newProfileApi} from "../Settings/SetApiAxios";
+import {newAuthMeApi, newProfileApi} from "../Settings/Api/SetApiAxios";
 import {withSetComponent} from "../Settings/HocSetting/hocWithSet";
 import {compose} from "redux";
 import NewsStatus from "./newsStatus";

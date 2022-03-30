@@ -26,7 +26,9 @@ export const useSetPagePaginator = (countUsersSet, pageSizeSet, pagesPart, onCur
                 : classes.pag}>{page}</span>
         ))
     const maxPageNumber = pageNumber > 1
-    const handleClick = () => setPageNumber(prevPageNumber => prevPageNumber - 1)
+    const handleNextPageNumber = () => setPageNumber(prevPageNumber => prevPageNumber + 1)
+    const handlePrevPageNumber = () => setPageNumber(prevPageNumber => prevPageNumber - 1)
 
-    return {pagesPartCount, pagesSet, pageNumber, setPageNumber, maxPageNumber, handleClick, activePagesSet}
+    return {pagesPartCount, pagesSet, pageNumber, setPageNumber,
+        maxPageNumber, handlePrevPageNumber,handleNextPageNumber, activePagesSet}
 }

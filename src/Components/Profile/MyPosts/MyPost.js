@@ -9,7 +9,6 @@ const MyPost = (props) => {
     let PostUser = props.PostData.map(p => <Post like={p.like} message={p.message} id={p.id} key={p.id}/>);
 
     // let newPostText = React.createRef();
-
     // const addNewPost = () => {
     //     // let newPost = newPostText.current.value;
     //     props.addPost();
@@ -57,7 +56,6 @@ const MyPost = (props) => {
 export default React.memo (MyPost);
 
   //       CLASS COMPONENT - OPTIMISATION => "shouldComponentUpdate" end "PureComponent"
-
 // class MyPost extends PureComponent {                      // OPTIMISATION - noy RENDER
 //
 //     // shouldComponentUpdate(nextProps, nextState, nextContext) {

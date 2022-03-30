@@ -1,6 +1,7 @@
-import {newApiStatus, newAuthMeApi, newDelUnfollow, newPostFollow, newProfileApi} from "../SetApiAxios";
-import {changeDataRedux} from "./newFunctionReduxer";
 import {stopSubmit} from "redux-form";
+import {newDelUnfollow, newPostFollow, newProfileApi} from "../Api/SetApiAxios";
+import {newApiStatus} from "../Api/newApiStatus";
+import {changeDataRedux} from "./newFunctionReduxer";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -120,19 +121,12 @@ let initialState = {
                return {
                    ...state,
                    prof: {...state.prof, photos: action.photos}
-
-
                }
 
-
-
-           default:
-
-               return state
-
+               default:
+                   return state
        }
-
- }
+}
 
 export const followAcCr = (userId) => ({ type:  FOLLOW, userId  });
 
@@ -154,8 +148,6 @@ export const newSetStatus = (status,newPutStatus) => ({type: NEW_SET_STATUS,stat
 
 export const  showPhotoSuccess = (photos) => ({type: SHOW_PHOTO_SUCCESS, photos})
 
-
-
 export const setProfThunk = (userId) => (dispatch)=>{
     newProfileApi(userId).then(response => {
         dispatch(setProfAcCr(response.data))
@@ -164,7 +156,6 @@ export const setProfThunk = (userId) => (dispatch)=>{
 
 const setFollowUnfollow = async (dispatch,userId,methodApi,actionCreator) => {
     dispatch(setLoadDisableButAcCr(true,userId))
-
     const response = await methodApi(userId)
     // .then(response => {
     if (response.data.resultCode===0){
@@ -172,7 +163,6 @@ const setFollowUnfollow = async (dispatch,userId,methodApi,actionCreator) => {
     }
     dispatch(setLoadDisableButAcCr(false,userId))
     // })
-
 }
 
 export const setFollowThunk = (userId) => async (dispatch) => {
@@ -189,6 +179,7 @@ export const setFollowThunk = (userId) => async (dispatch) => {
      //        dispatch(setLoadDisableButAcCr(false,userId))
      //    // })
 }
+
 export const setUnfollowThunk =(userId) => async (dispatch)=> {
     // const methodApi = newDelUnfollow
     // const actionCreator = unfollowAcCr
@@ -205,19 +196,14 @@ export const setUnfollowThunk =(userId) => async (dispatch)=> {
 }
 
 export const newGetStatusThunk = (userId) => (dispatch) => {
-
     newApiStatus.newGetStatus (userId).then((response)=> {
-
-            dispatch(newSetStatus(response.data && response.data.data))
-
+        dispatch(newSetStatus(response.data && response.data.data))
     })
 }
 
  export const newPutStatusThunk = (status,newPutStatus) => (dispatch)=> {
-
-     newApiStatus.newPutStatus (status).then(response => {
+    newApiStatus.newPutStatus (status).then(response => {
           if (response.data.resultCode === 0){
-
               dispatch(newSetStatus(status,newPutStatus))
           }
      })
@@ -225,8 +211,7 @@ export const newGetStatusThunk = (userId) => (dispatch) => {
  }
 
 export const showPhoto = (file) => async (dispatch)=> {
-
-     const response =  await
+    const response =  await
       newApiStatus.showPutPhoto (file)
           // .then(response => {
         if (response.data.resultCode === 0){
@@ -235,10 +220,9 @@ export const showPhoto = (file) => async (dispatch)=> {
     // })
 
 }
+
 export const saveContacts = (prof) => async (dispatch,getState)=> {
-
     const userId = getState().setAuth.id
-
     const response =  await
         newApiStatus.savePutContacts(prof)
     // .then(response => {
@@ -250,6 +234,5 @@ export const saveContacts = (prof) => async (dispatch,getState)=> {
     }
     // })
 }
-
 
 export default SetUserReducer

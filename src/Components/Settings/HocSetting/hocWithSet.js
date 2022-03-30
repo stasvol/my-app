@@ -2,17 +2,14 @@ import React from 'react'
 import {Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 
- const matStateToPropsRedir = (state) =>({
-    isSetAuth: state.setAuth.isSetAuth
-})
+ const matStateToPropsRedir = ({setAuth:{isSetAuth}}) =>({isSetAuth})
 
 export const withSetComponent = (Component) => {
-
-    const withSetComponentContainer = (props) => {
-        if (!props.isSetAuth) return <Redirect to={'/Login'}/>
+     const withSetComponentContainer = ({isSetAuth,...props}) => {
+        if (!isSetAuth) return <Redirect to={'/Login'}/>
         return <Component {...props}/>
     }
-    let withSetComponentRedirect = connect(matStateToPropsRedir) (withSetComponentContainer)
+    const withSetComponentRedirect = connect(matStateToPropsRedir) (withSetComponentContainer)
     return  withSetComponentRedirect
 }
 

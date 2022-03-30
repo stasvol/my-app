@@ -1,8 +1,7 @@
 import React from 'react'
 import axios from "axios";
 
-
-const setApiAxios = axios.create({
+export const setApiAxios = axios.create({
     baseURL:'https://social-network.samuraijs.com/api/1.0/',
     withCredentials: true,
     headers:{
@@ -10,11 +9,7 @@ const setApiAxios = axios.create({
     }
 });
 
-export const newAuthMeApi =() =>{
-
-    return  setApiAxios.get(`auth/me`).then(response => {
-        return response.data
-    });
+export const newAuthMeApi = () => setApiAxios.get(`auth/me`).then(response => response.data);
     // axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {withCredentials: true })
     //     .then(response => {
     //
@@ -24,21 +19,16 @@ export const newAuthMeApi =() =>{
     //         }
     //
     //     })
-}
 
-export const newProfileApi = (userId) => {
-   return   setApiAxios.get( `Profile/`+ userId)
+export const newProfileApi = (userId) => setApiAxios.get( `Profile/`+ userId)
         // `https://social-network.samuraijs.com/api/1.0/Profile/`+ userId,
         // {withCredentials:true})
         // .then(response => {
         //     this.props.setProf(response.data)
         //
         // })
-}
 
-export const newDelUnfollow = (userId) => {
-    return setApiAxios.delete(`follow/${userId}`)
-
+export const newDelUnfollow = (userId) => setApiAxios.delete(`follow/${userId}`)
 //     axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
 //         {
 //             withCredentials: true,
@@ -46,11 +36,8 @@ export const newDelUnfollow = (userId) => {
 //                 "API-KEY": "6ca7206a-79cd-4b75-a7a8-fe4c71b43bb1"
 //             }
 // })
-}
 
-export const newPostFollow = (userId) => {
-    return setApiAxios.post(`follow/${userId}`)
-
+export const newPostFollow = (userId) => setApiAxios.post(`follow/${userId}`)
     // axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{},
     //     {
     //         withCredentials: true,
@@ -59,31 +46,29 @@ export const newPostFollow = (userId) => {
     //         }
     //
     //     })
-}
 
-export const settingApi = {
-
-     setGetPage (pageSizeSet,currentPageSet) {
-
-       return setApiAxios.get(`users?count=${pageSizeSet}&page=${currentPageSet}`)
-       // axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSizeSet}
-       //  &page=${this.props.currentPageSet}`,{withCredentials:true}).then(response => {
-       //
-       //     this.props.setIsLoad(false)
-       //     this.props.settingAddUser(response.data.items)
-       //     this.props.settingUserTotalCount(response.data.totalCount)
-       //
-       //
-       // })
-   },
-
-     setGetUsers(pageSizeSet,currentPageSet){
-       return setApiAxios.get(`users?count=${pageSizeSet}&page=${currentPageSet}`)
-        // axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSizeSet}
-        // &page=${currentPageSet}`,{withCredentials:true })
-    }
-
-}
+// export const settingApi = {
+//
+//      setGetPage (pageSizeSet,currentPageSet) {
+//          return setApiAxios.get(`users?count=${pageSizeSet}&page=${currentPageSet}`)
+//        // axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSizeSet}
+//        //  &page=${this.props.currentPageSet}`,{withCredentials:true}).then(response => {
+//        //
+//        //     this.props.setIsLoad(false)
+//        //     this.props.settingAddUser(response.data.items)
+//        //     this.props.settingUserTotalCount(response.data.totalCount)
+//        //
+//        //
+//        // })
+//    },
+//
+//      setGetUsers(pageSizeSet,currentPageSet){
+//        return setApiAxios.get(`users?count=${pageSizeSet}&page=${currentPageSet}`)
+//         // axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSizeSet}
+//         // &page=${currentPageSet}`,{withCredentials:true })
+//     }
+//
+// }
 // export const newGetStatus = (userId) =>{
 //          return setApiAxios.get(`Profile/status/`+ userId)
 //        }
@@ -92,34 +77,32 @@ export const settingApi = {
 //          return setApiAxios.put(`Profile/status`,{status:status})
 //         }
 
-
-export const newApiStatus ={
-
-       newGetStatus (userId) {
-         return setApiAxios.get(`Profile/status/${userId}`)
-       },
-
-       newPutStatus (status) {
-         return setApiAxios.put(`Profile/status`,{status:status})
-       },
-
-      showPutPhoto(photoFile)  {
-
-           const formData = new FormData
-          formData.append("image", photoFile)
-
-          return setApiAxios.put(`Profile/photo`, formData,{
-              headers: {
-                  'Content-Type': 'multipart/form-data'
-              }
-          })
-      },
-
-      savePutContacts(prof) {
-        return setApiAxios.put(`Profile`,prof)
-    }
-
-}
+// export const newApiStatus ={
+//        newGetStatus (userId) {
+//          return setApiAxios.get(`Profile/status/${userId}`)
+//        },
+//
+//        newPutStatus (status) {
+//          return setApiAxios.put(`Profile/status`,{status:status})
+//        },
+//
+//       showPutPhoto(photoFile)  {
+//
+//            const formData = new FormData
+//           formData.append("image", photoFile)
+//
+//           return setApiAxios.put(`Profile/photo`, formData,{
+//               headers: {
+//                   'Content-Type': 'multipart/form-data'
+//               }
+//           })
+//       },
+//
+//       savePutContacts(prof) {
+//         return setApiAxios.put(`Profile`,prof)
+//     }
+//
+// }
 // savePhoto(photoFile) {
 //     const formData = new FormData();
 //     formData.append("image", photoFile);

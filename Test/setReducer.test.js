@@ -1,6 +1,5 @@
-
 import React from 'react'
-import setReducer, {addNewMessageAC,deleteMessageAC} from './setReducer'
+import setReducer, {addNewMessageAC,deleteMessageAC} from '../src/Components/Settings/Set_reducers/setReducer'
 
 const state = {
     message: [
