@@ -20,5 +20,8 @@ export const  minLength = min => value => {
  return   (value && value.length < min  ?  `Min length is ${min} symbol`: undefined)
 
 }
+
+export const maxLength20 =  maxLength(20);
+export const minLength2 =  minLength(2);
 // const minLength2 =  minLength(2)
 

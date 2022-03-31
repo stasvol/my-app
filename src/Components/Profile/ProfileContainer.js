@@ -95,7 +95,6 @@ const ProfileContainer = ({match,authorisedUserId,history,
                  </div>
              )
 }
-
 // let RedirectComponent = (props) => {
 //
 //     if (!props.isAuth) return <Redirect to={'/login'} />
