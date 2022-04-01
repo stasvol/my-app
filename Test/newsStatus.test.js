@@ -1,5 +1,5 @@
 import React from "react";
-import NewsStatus from "./newsStatus";
+import NewsStatus from "../src/Components/News/newsStatus";
 import {create,act} from "react-test-renderer";
 
 describe('NewsStatus', ()=> {

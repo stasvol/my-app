@@ -4,12 +4,14 @@
     height: 100px;
     border-radius: 100%;
 }
+
 .pag {
     border: 1px solid black;
     border-right: 0;
     padding: 2px;
     cursor: pointer;
 }
+
 .pag:last-child {
     border-right: 1px solid black;
 }
@@ -22,16 +24,16 @@
     border-right: 0;
     cursor: pointer;
 }
+
 .active:last-child {
     border-right: 1px solid #960f0f;
 }
-
-      /* ERROR */
 
 .spanError {
     padding: 5px;
     color: red;
 }
+
 .divError textarea,
 .divError input  {
     border: 2px solid red;

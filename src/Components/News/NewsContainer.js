@@ -86,7 +86,6 @@ class NewsContainer extends React.Component {
 
     }
 
-
     render() {
 
           // if (!this.props.isSetAuth) return <Redirect to={'/Login'}/>
