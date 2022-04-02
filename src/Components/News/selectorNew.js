@@ -1,17 +1,16 @@
  import React from "react";
  import {createSelector} from "reselect";
-
-export const newUsers = state => state.users.users;
-export const newCountUsersSet = state => state.users.countUsersSet;
-export const newPageSizeSet = state => state.users.pageSizeSet;
-export const newCurrentPageSet = state => state.users.currentPageSet;
-export const newIsLoad = state => state.users.isLoad;
-export const newProf = state => state.users.prof;
-export const newIsSetAuth = state => state.setAuth.isSetAuth;
-export const newLogin = state => state.setAuth.login;
-export const newSetDisableBut = state => state.users.setDisableBut;
-export const newStatus = state => state.users.status;
-export const newIdAuth = state => state.setAuth.id;
+ export const newUsers = ({users:{users}}) => users;
+export const newCountUsersSet = ({users:{countUsersSet}}) => countUsersSet;
+export const newPageSizeSet = ({users:{pageSizeSet}}) => pageSizeSet;
+export const newCurrentPageSet = ({users:{currentPageSet}}) => currentPageSet;
+export const newIsLoad = ({users:{isLoad}})=> isLoad;
+export const newProf = ({users:{prof}}) => prof;
+ export const newSetDisableBut = ({users:{setDisableBut}}) => setDisableBut;
+ export const newStatus = ({users:{status}}) => status;
+export const newIsSetAuth = ({setAuth:{isSetAuth}}) => isSetAuth;
+export const newLogin = ({setAuth:{login}}) => login;
+export const newIdAuth = ({setAuth:{id}}) => id;
 
 // export const newUsersReselector = createSelector(newUsers,newIsLoad,
 //     (users,isLoad)=>{

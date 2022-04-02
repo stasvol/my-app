@@ -1,3 +1,4 @@
+import React from "react";
 import {Field, reduxForm} from "redux-form";
 
 import {minLength3, maxLength30, required} from "./NewSetFormValidators";

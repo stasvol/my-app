@@ -1,20 +1,14 @@
 import dialogReducer from './dialog_reducer';
 import postReducer from './prof_reducer';
 import siteBarReducer from './sitebar_reducer';
-
 // const ADD_POST = 'ADD POST';
 // const ADD_CHANGE_TEXT ='ADD CHANGE TEXT';
 // const ADD_MESSAGE = 'ADD MESSAGE';
 // const ADD_CHANGE_NEW_MESSAGE = 'ADD CHANGE NEW MESSAGE';
-
-
 let store = {
-
     state: {
-
         dialogPage: {
             DialogData: [
-
                 {id: 1, name: 'Artur', img: 'https://avatarko.ru/img/kartinka/1/monstr_kot.jpg'},
                 {id: 2, name: 'Diana', img: 'https://www.meme-arsenal.com/memes/c1e1c57e0465d02cf0b0d7f88425d2ea.jpg'},
                 {
@@ -33,7 +27,6 @@ let store = {
                 {id: 8, name: 'Vova', img: 'https://www.meme-arsenal.com/memes/e0d6c17f7cdbf397eaa821e56e2c1b51.jpg'},
                 {id: 9, name: 'Vovan', img: 'https://i.pinimg.com/originals/5b/1a/9a/5b1a9ab141ba1ade4ab06c8215059225.jpg'
                 },
-
             ],
             MessageUserData: [
                 {id: 1, message: 'Vse klas'},
@@ -43,23 +36,16 @@ let store = {
                 {id: 5, message: 'YO-YO-YO-YO'},
                 {id: 6, message: 'YO-MO-YO'},
             ],
-
             newMessageText: 'Hi',
-
-
         },
-
         postPage: {
             PostData: [
                 {id: 1, like: '20', message: 'Super'},
                 {id: 2, like: '3', message: 'Kliovo'},
                 {id: 3, like: '9', message: 'Class'},
             ],
-
             newText: 'Hello',
-
         },
-
         siteBar: {
             siteBarNav: [
                 {

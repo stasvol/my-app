@@ -18,23 +18,23 @@ import Error from "./Error/error";
 import './App.css';
 import {
     PathRedirect,
-    PathDialogContainer,
-    PathProfileContainer,
-    PathUserContainer,
+    // PathDialogContainer,
+    // PathProfileContainer,
+    // PathUserContainer,
     PathVk, PathMusic, PathNewsContainer, PathSettingContainer, PathError
 } from "./PathPages/PathPages";
 
 // const DialogContainer = React.lazy(() => import("./Components/Dialogs/DialogContainer"));
 // const ProfileContainer = React.lazy(() => import("./Components/Profile/ProfileContainer"));
 // const UserContainer = React.lazy(() => import("./Components/Users/UserContainer"));
-PathDialogContainer = React.lazy(() => import("./PathPages/PathPages"));
-PathProfileContainer = React.lazy(() => import("./PathPages/PathPages"));
-PathUserContainer = React.lazy(() => import("./PathPages/PathPages"));
+const PathDialogContainer = React.lazy(() => import("./PathPages/PathPages"));
+const PathProfileContainer = React.lazy(() => import("./PathPages/PathPages"));
+const PathUserContainer = React.lazy(() => import("./PathPages/PathPages"));
 
 
 
 
-const App = () => {
+const App = ({initialized}) => {
 
     // componentDidMount(props) {
     //     this.props.initializeApp()
@@ -43,8 +43,14 @@ const App = () => {
         initializeApp()
     },[initializeApp])
 
-        !initialized && <Preloader/> &&
-        <img src={'https://cdn.segodnya.ua/img/gallery/5975/59/615213_main.jpg'}/>
+       if(!initialized){
+           return (
+               <>
+               <Preloader/>
+               <img className='images' src={'https://cdn.segodnya.ua/img/gallery/5975/59/615213_main.jpg'}/>
+               </>
+           )
+       }
 
 
         return (

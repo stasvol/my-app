@@ -1,19 +1,11 @@
-import React, {Component} from 'react';
-import classes from './Nav.module.css';
+import React from 'react';
 import {NavLink} from "react-router-dom";
+
 import SiteBar from './SiteBar/SiteBar'
 
+import classes from './Nav.module.css';
 
-
-const Navbar = (props) => {
-
-    let Friends = props.state.siteBarNav.map( (obj, i) => {
-        return <SiteBar id={obj.id} name={obj.name} img={obj.img }   changeClick={props.changeClick}  key={i}/>
-    })
-
-
-
-    return  (
+const Navbar = ({siteBarNav,changeClick}) => (
 
         <nav className={classes.nav}>
             <ul>
@@ -31,13 +23,12 @@ const Navbar = (props) => {
                     <NavLink to={'/Setting'} activeClassName={classes.active}>Settings</NavLink></li>
                 <li className={classes.item}><h2 className={classes.header}>FRIEND</h2></li>
             </ul>
-            {Friends}
+            {siteBarNav.map(({id,name,img}) => <SiteBar id={id} name={name} img={img}
+                                                        changeClick={changeClick}  key={id}/>
+            )
+            }
         </nav>
 
     )
-}
-
-
-
 
 export default Navbar

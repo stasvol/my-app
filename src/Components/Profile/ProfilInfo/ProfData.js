@@ -1,3 +1,5 @@
+import React from "react";
+
 import {Contact} from "./Contact";
 
 import classes from "./ProfilInfo.module.css";

@@ -1,3 +1,5 @@
+import React from "react";
+
 const ContactUserNew = ({isOwnerNew, editContactNew,
                         users:{fullName,aboutMe,LookingForAJobDescription,
                             contacts,github,vk,facebook,instagram,twitter}}) => (

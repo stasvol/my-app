@@ -1,3 +1,5 @@
+import React from "react";
+
 export const useSetting = (message,addNewMessage) => {
 
     const addMessage = message.map((mes,i)=> <li key={i}> <div>{mes.message}</div>

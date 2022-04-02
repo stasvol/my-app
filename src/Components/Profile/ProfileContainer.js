@@ -1,5 +1,5 @@
 import React from 'react';
-import {withRouter} from "react-router-dom";
+import {Redirect, withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 import {compose} from "redux";
 
@@ -10,12 +10,13 @@ import {
 } from "../../Redux/prof_reducer";
 import {withAuthRedirect} from "../../Hock/withAuthRedirect";
 import {useProfileContainer} from "../../Hook/useProfileContainer";
+// import {Redirect} from "react-router";
 
 const ProfileContainer = ({match,authorisedUserId,history,
                               getUsers,getStatus,isAuth,profile,
                               status,updateStatus,savePhoto,...props}) => {
 
-    const {userUpdateProfile} = useProfileContainer(match,authorisedUserId,getUsers,getStatus)
+    const {userUpdateProfile} = useProfileContainer(match,authorisedUserId,getUsers,getStatus,history)
 
     // const userUpdateProfile = () => {
     //      let userId = match.params.userId;

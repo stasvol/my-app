@@ -103,19 +103,22 @@ useEffect(()=>{
         )
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({users,countUsersSet,
+                             pageSizeSet,currentPageSet,
+                             isLoad,prof,isSetAuth,login,
+                             setDisableBut,status,idAuth}) => {
     return {
-        users: newUsers(state),
-        countUsersSet: newCountUsersSet(state) ,
-        pageSizeSet: newPageSizeSet(state) ,
-        currentPageSet: newCurrentPageSet(state),
-        isLoad: newIsLoad(state),
-        prof: newProf(state),
-        isSetAuth:newIsSetAuth(state),
-        login: newLogin(state),
-        setDisableBut:newSetDisableBut(state),
-        status:newStatus(state),
-        idAuth:newIdAuth(state),
+        users: newUsers(users),
+        countUsersSet: newCountUsersSet(countUsersSet) ,
+        pageSizeSet: newPageSizeSet(pageSizeSet) ,
+        currentPageSet: newCurrentPageSet(currentPageSet),
+        isLoad: newIsLoad(isLoad),
+        prof: newProf(prof),
+        isSetAuth:newIsSetAuth(isSetAuth),
+        login: newLogin(login),
+        setDisableBut:newSetDisableBut(setDisableBut),
+        status:newStatus(status),
+        idAuth:newIdAuth(idAuth),
         // profile: state.profPage.profile
         // users: state.users.users,
         // countUsersSet: state.users.countUsersSet ,

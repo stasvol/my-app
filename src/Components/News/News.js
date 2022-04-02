@@ -60,8 +60,7 @@ const News = ({SetCurPage,countUsersSet,
                 <button>LOGIN</button>
             </NavLink>}
 
-            {
-                pagesSet.map((page, i) => {
+            {pagesSet.map((page, i) => {
                     // const handleClick = (page) => onCurPageSet(page)
                         return <span onClick={handleClick(page)} key={i}
                                      className={currentPageSet === page

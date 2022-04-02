@@ -1,5 +1,6 @@
+import React, {useState} from "react";
+
 import Preloader from "../Components/Common/preloader/preloader";
-import {useState} from "react";
 
 export const useProfilInfo = (profile,savePhoto,editProfile) => {
 

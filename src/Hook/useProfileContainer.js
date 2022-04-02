@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 
-export const useProfileContainer = (match,authorisedUserId,getUsers,getStatus) => {
+export const useProfileContainer = (match,authorisedUserId,getUsers,getStatus,history) => {
 
     const userUpdateProfile = () => {
         let userId = match.params.userId;

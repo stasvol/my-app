@@ -1,13 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux';
+
 import Nav from "./Nav";
 import {siteBarActionCreator} from "../../Redux/sitebar_reducer";
 
-const mapStateToProps = (state) =>{
-    return {
-        state: state.siteBar
-    }
-}
+const mapStateToProps = ({siteBar:{siteBarNav}}) => siteBarNav
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -17,9 +14,6 @@ const mapDispatchToProps = (dispatch) => {
         },
     }
 }
-
 // const mapDispatchToProps = { changeClick: siteBarActionCreator };
-
 const NavContainer = connect(mapStateToProps, mapDispatchToProps)(Nav);
-
 export default NavContainer

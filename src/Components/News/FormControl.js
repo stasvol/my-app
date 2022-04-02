@@ -20,7 +20,6 @@ import classes from './News.module.css'
     )
 
 }
-
 // export const Textarea = ({input,meta, ...props})=>{
 //
 //     const someError =  meta.touched && meta.error
@@ -37,7 +36,6 @@ import classes from './News.module.css'
 //    )
 //
 // }
-
 export const Textarea = (props) => {
     const {input,meta,children, ...restProps} = props
     return < FormControl {...props}><textarea {...input}  /></FormControl>
@@ -53,5 +51,4 @@ export const createField = (placeholder,name,validators,component,props={},text=
         <Field placeholder={placeholder}  validate={validators} name={name}
                component={component} {...props} /> {text}
     </div>
-
 )
