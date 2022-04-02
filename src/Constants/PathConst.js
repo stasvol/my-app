@@ -1,1 +1,2 @@
-export const LoadingConst = <div>Loading...</div>
+
+export const LoadingConst = () => <div>Loading...</div>

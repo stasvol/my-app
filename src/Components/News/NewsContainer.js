@@ -1,23 +1,22 @@
-import  React  from "react";
-import classes from './News.module.css';
-import News from "./News";
+import React, {useEffect} from "react";
+import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
+import {compose} from "redux";
+// import classes from './News.module.css';
+import News from "./News";
 import {
-    currentPageSetAcCr, newPutStatus,
-    followAcCr, newPutStatusThunk, newSetStatus, newGetStatusThunk, setFollowThunk,
-    setLoadDisableButAcCr,
+    currentPageSetAcCr, followAcCr,
+    newPutStatusThunk, newGetStatusThunk,
+    setFollowThunk, setLoadDisableButAcCr,
     setProfAcCr, setProfThunk,
-    settingUserAcCr, setUnfollowThunk, Unfoll0wThunk,
+    settingUserAcCr, setUnfollowThunk,
     unfollowAcCr, showPhoto, saveContacts
 }
     from "../Settings/Set_reducers/setUserReducer";
-import axios from "axios";
-import {NavLink, Redirect, withRouter} from "react-router-dom";
-import {newAuthThunk, setAuthReducer, setAuthReducerAcCr} from "../Settings/Set_reducers/setAuthReducer";
-import {newAuthMeApi, newProfileApi} from "../Settings/Api/SetApiAxios";
-import {withSetComponent} from "../Settings/HocSetting/hocWithSet";
-import {compose} from "redux";
-import NewsStatus from "./newsStatus";
+import {newAuthThunk, setAuthReducerAcCr} from "../Settings/Set_reducers/setAuthReducer";
+// import {newAuthMeApi, newProfileApi} from "../Settings/Api/SetApiAxios";
+// import {withSetComponent} from "../Settings/HocSetting/hocWithSet";
+// import NewsStatus from "./newsStatus";
 import {
     newCountUsersSet,
     newCurrentPageSet, newIdAuth,
@@ -25,85 +24,86 @@ import {
     newIsSetAuth, newLogin,
     newPageSizeSet,
     newProf, newSetDisableBut, newStatus,
-    newUsers, newUsersReselector
+    newUsers,
 } from "./selectorNew";
+// import {useNewsContainer} from "../../Hook/useNewsContainer";
 
 
-class NewsContainer extends React.Component {
-
-     methodMontUpdate () {
-         this.props.newAuthThunk(this.props.userId,this.props.email,this.props.login)
-
-         let userId = this.props.match.params.userId
+const NewsContainer = ({match,history,...props}) => {
+// const {methodMontUpdate} = useNewsContainer(match,history,props)
+   const  methodMontUpdate = () => {
+         props.newAuthThunk(props.userId,props.email,props.login)
+         let userId = match.params.userId
          if (!userId){
-             userId = this.props.idAuth
+             userId = props.idAuth
              if (!userId) {
-                 this.props.history.push("/News")
+                 history.push("/News")
              }
          }
-
-         this.props.setProfThunk(userId)
-         this.props.newGetStatusThunk(userId)
+         props.setProfThunk(userId)
+         props.newGetStatusThunk(userId)
      }
 
-    componentDidMount() {
-
-        this.methodMontUpdate()
-        // axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {withCredentials: true })
-        // newAuthMeApi().then(data => {
-        //           if (data.resultCode===0){
-        //           let {id,email,login } = data.data
-        //           this.props.setAuthReducer(id,email,login)
-        //       }
-        //
-        //     })
-        // this.props.newAuthThunk(this.props.userId,this.props.email,this.props.login)
-        //
-        // let userId = this.props.match.params.userId
-        // if (!userId){
-        //     userId = this.props.idAuth
-        //     if (!userId) {
-        //         this.props.history.push("/News")
-        //     }
-        // }
-        //
-        // this.props.setProfThunk(userId)
-        // this.props.newGetStatusThunk(userId)
-        // newProfileApi(userId).then(response => {
-        //           this.props.setProf(response.data)
-        //        })
-        // axios.get(`https://social-network.samuraijs.com/api/1.0/Profile/`+ userId,
-        //     {withCredentials:true})
-        //     .then(response => {
-        //     this.props.setProf(response.data)
-        //
-        // })
-    }
-    componentDidUpdate(prevProps, prevState, snapshot) {
-       if (this.props.match.params.userId !== prevProps.match.params.userId){
-           this.methodMontUpdate()
-       }
-
-    }
-
-    render() {
-
-          // if (!this.props.isSetAuth) return <Redirect to={'/Login'}/>
+useEffect(()=>{
+    methodMontUpdate()
+},[match.params.userId])
+    // componentDidMount() {
+    //
+    //     methodMontUpdate()
+    //     // axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {withCredentials: true })
+    //     // newAuthMeApi().then(data => {
+    //     //           if (data.resultCode===0){
+    //     //           let {id,email,login } = data.data
+    //     //           this.props.setAuthReducer(id,email,login)
+    //     //       }
+    //     //
+    //     //     })
+    //     // this.props.newAuthThunk(this.props.userId,this.props.email,this.props.login)
+    //     //
+    //     // let userId = this.props.match.params.userId
+    //     // if (!userId){
+    //     //     userId = this.props.idAuth
+    //     //     if (!userId) {
+    //     //         this.props.history.push("/News")
+    //     //     }
+    //     // }
+    //     //
+    //     // this.props.setProfThunk(userId)
+    //     // this.props.newGetStatusThunk(userId)
+    //     // newProfileApi(userId).then(response => {
+    //     //           this.props.setProf(response.data)
+    //     //        })
+    //     // axios.get(`https://social-network.samuraijs.com/api/1.0/Profile/`+ userId,
+    //     //     {withCredentials:true})
+    //     //     .then(response => {
+    //     //     this.props.setProf(response.data)
+    //     //
+    //     // })
+    // }
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //    if (props.match.params.userId !== prevProps.match.params.userId){
+    //        methodMontUpdate()
+    //    }
+    //
+    // }
+    // if (!props.isSetAuth) return <Redirect to={'/Login'}/>
         return (
             <div>
-                <News {...this.props} prof={this.props.prof} status={this.props.status}
-                      newPutStatusThunk={this.props.newPutStatusThunk}
-                       isOwnerNew={!!this.props.match.params.userId}
-                      showPhoto={this.props.showPhoto} saveContacts={this.props.saveContacts} />
+                <News {...props} users={props.users}
+                      prof={props.prof} status={props.status}
+                      newPutStatusThunk={props.newPutStatusThunk}
+                      isOwnerNew={match.params.userId} SetCurPage={props.SetCurPage}
+                      countUsersSet={props.countUsersSet} pageSizeSet={props.pageSizeSet}
+                      showPhoto={props.showPhoto} isSetAuth={props.isSetAuth}
+                      login={props.login} currentPageSet={props.currentPageSet}
+                      saveContacts={props.saveContacts} setFollowThunk={props.setFollowThunk}
+                      setUnfollowThunk={props.setUnfollowThunk} setDisableBut={props.setDisableBut}/>
 
             </div>
         )
-    }
 }
 
-
 const mapStateToProps = (state) => {
-
     return {
         users: newUsers(state),
         countUsersSet: newCountUsersSet(state) ,

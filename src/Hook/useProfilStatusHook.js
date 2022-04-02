@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 export const useProfilStatusHook = (status,updateStatus) => {
 
     const [editMode, setEditMode] = useState(false);
-    const [status, setStatus] = useState(status);
+    const [statusNew, setStatus] = useState(status);
 
     useEffect(() => {
         setStatus(status)
@@ -15,11 +15,11 @@ export const useProfilStatusHook = (status,updateStatus) => {
 
     const deActiveEditMode = () => {
         setEditMode(false);
-        updateStatus(status)
+        updateStatus(statusNew)
     }
 
     const changeStatus = (e) => {
         setStatus(e.target.value);
     }
-    return {editMode,activeEditMode,deActiveEditMode,changeStatus}
+    return {editMode,activeEditMode,deActiveEditMode,changeStatus,statusNew}
 }

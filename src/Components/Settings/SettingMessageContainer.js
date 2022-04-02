@@ -29,19 +29,19 @@ import SettingMessage from "./SettingMessage";
 //
 //     }
 
-    const mapStateToPros = ({posts:{posts,newPostMesText}}) => ({posts, newPostMesText})
+    const mapStateToPros = ({posts: {posts, newPostMesText}}) => ({posts, newPostMesText})
 
-    const mapDispatchToProps = (dispatch) =>{
-            return {
-                changeText: (textNew) => {
-                    dispatch(newPostMesTextAC(textNew))
-                },
-                addText: (newPostMesText) => {
-                    dispatch(addNewPostAC(newPostMesText))
-                }
+    const mapDispatchToProps = (dispatch) => {
+        return {
+            changeText: (textNew) => {
+                dispatch(newPostMesTextAC(textNew))
+            },
+            addText: (newPostMesText) => {
+                dispatch(addNewPostAC(newPostMesText))
             }
+        }
     }
 
-    const SettingMessageContainer = connect(mapStateToPros, mapDispatchToProps)(SettingMessage)
+ const SettingMessageContainer = connect(mapStateToPros, mapDispatchToProps)(SettingMessage)
 
 export default SettingMessageContainer

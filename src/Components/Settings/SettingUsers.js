@@ -130,7 +130,7 @@ const SettingUsers = ({
                     return (
                         <div key={i}>
                             <div>
-                                <NavLink to={'/News/'${id}}>
+                                <NavLink to={'/News/'+id}>
                                     <img className={classes.foto} src={photos.small ? photos.small : Photo}
                                          alt={'photo'}/>
                                 </NavLink>

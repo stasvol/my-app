@@ -25,7 +25,7 @@ const  ProfilStatusHook = ({status,updateStatus}) =>{
     // const changeStatus = (e) => {
     //     setStatus(e.target.value);
     // }
-    const {editMode,activeEditMode,deActiveEditMode,changeStatus}
+    const {editMode,activeEditMode,deActiveEditMode,changeStatus,statusNew}
         = useProfilStatusHook(status,updateStatus)
         return (
             <div>
@@ -38,7 +38,7 @@ const  ProfilStatusHook = ({status,updateStatus}) =>{
                     :
                         <div className={classes.status}>
                             <input  onChange={changeStatus}
-                                    onBlur={deActiveEditMode} type={'text'} value={status} />
+                                    onBlur={deActiveEditMode} type={'text'} value={statusNew} />
                         </div>
                 }
             </div>

@@ -1,6 +1,7 @@
 import React from 'react'
-import classes from './News.module.css'
 import {Field} from "redux-form";
+
+import classes from './News.module.css'
 
  export  const FormControl = ({input,meta,children, ...props})=>{
 
