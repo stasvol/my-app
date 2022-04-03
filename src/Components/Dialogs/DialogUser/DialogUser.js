@@ -1,21 +1,17 @@
 import React from "react";
-import classes from './DialogUser.module.css'
 import {NavLink} from "react-router-dom";
 
-const DialogUser = (props) => {
+import classes from './DialogUser.module.css'
 
-    let path = '/dialogs/1' + props.id
-
-
+const DialogUser = ({id,img,name}) => {
+    let path = '/dialogs/1' + id
     return (
-
         <div>
-
-            <img className={classes.imgAvatar} src={props.img} alt={props.name} />
+            <img className={classes.imgAvatar} src={img} alt={name} />
 
             <ul className={classes.dialogUser}>
                 <li className={`${classes.user} `}>
-                    <NavLink to={path} activeClassName={classes.active}>{props.name}</NavLink>
+                    <NavLink to={path} activeClassName={classes.active}>{name}</NavLink>
                 </li>
             </ul>
         </div>

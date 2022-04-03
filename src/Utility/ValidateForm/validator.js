@@ -23,5 +23,8 @@ export const  minLength = min => value => {
 
 export const maxLength20 =  maxLength(20);
 export const minLength2 =  minLength(2);
+export const maxLength30 =  maxLength(30);
+export const minLength3 =  minLength(3);
+
 // const minLength2 =  minLength(2)
 

@@ -1,7 +1,7 @@
-import {profileApi, userApi as addAxios} from "../Api/api";
-import {stopSubmit} from "redux-form";
-import classes from "../Error/error.module.css";
 import React from "react";
+import {profileApi} from "../Api/profileApi";
+import {stopSubmit} from "redux-form";
+// import classes from "../Error/error.module.css";
 
 const ADD_POST = 'ADD POST';
 const ADD_CHANGE_TEXT = 'ADD CHANGE TEXT';
@@ -11,18 +11,14 @@ const DELETE_POST = 'DELETE POST'
 const SAVE_PHOTO_SUCCESS = 'SAVE PHOTO SUCCESS'
 
 let initialState = {
-
     PostData: [
         {id: 1, like: '20', message: 'Super'},
         {id: 2, like: '3', message: 'Kliovo'},
         {id: 3, like: '9', message: 'Class'},
     ],
-
     newText: 'Hello',
     profile: null,
     status: '',
-
-
 }
 
 const profReducer = (state = initialState, action) => {
@@ -44,8 +40,8 @@ const profReducer = (state = initialState, action) => {
             let newPost = {
                 id: 4,
                 like: '0',
-                // message: state.newText                 // (message)-parametr funktion
-                message: action.newText                 // (message)-parametr funktion
+                // message: state.newText    // (message)-parametr funktion
+                message: action.newText      // (message)-parametr funktion
             };
              return {
                  ...state,
@@ -53,11 +49,8 @@ const profReducer = (state = initialState, action) => {
                  newText: ''
              }
 
-
-
              case ADD_CHANGE_TEXT:
-
-            // let copyState = {...state}
+                 // let copyState = {...state}
             // copyState.newText = action.newText;
             //
             // return copyState;
@@ -80,21 +73,18 @@ const profReducer = (state = initialState, action) => {
             }
 
         case DELETE_POST:
-
             return {
                 ...state,
                 PostData: state.PostData.filter(({ id }) => id !== action.postId)
             }
 
         case SAVE_PHOTO_SUCCESS:
-
             return {
                 ...state,
                 profile: {...state.profile,   photos: action.photos }
-
             }
 
-        default:
+            default:
             return state;
     }
 }
@@ -111,77 +101,57 @@ export const deletePost = (postId) => ({type:DELETE_POST, postId});
 
 export const savePhotoSuccess = (photos) => ({type:SAVE_PHOTO_SUCCESS, photos});
 
-
 export const  profileThunkCreator = (userId) => {
-
     return  async (dispatch) =>  {
-
         // let userId = this.props.match.params.userId;
         // if (!userId){
         //     userId=2;
         // }
        const response = await profileApi.getProfile(userId)
             // axios.get(`https://social-network.samuraijs.com/api/1.0/Profile/`+userId)
-
             // .then(response => {
-
-                dispatch(setUsersProfile(response.data));
-
-            // })
+        dispatch(setUsersProfile(response.data));
+       // })
     }
 }
+
 export const  getStatus = (userId) => {
-
     return async (dispatch) =>  {
-
         const response = await profileApi.getStatus(userId)
             // .then(response => {
-
-                dispatch(setStatus(response.data));
+        dispatch(setStatus(response.data));
         // })
     }
 }
+
 export const  updateStatus = (status) => {
-
     return async (dispatch) =>  {
-
         const response = await profileApi.updateStatus(status)
             // .then(response => {
          try {
              if (response.data.resultCode === 0){
-
                  dispatch(setStatus(status));
              }
-
              if (response.data.resultCode === 1) {
-
-                throw new Error('Something went wrong.');
-
+                 throw new Error('Something went wrong.');
              }
          } catch (error){
-
-                // return  <div className={classes.modul}>
+            // return  <div className={classes.modul}>
                 //      <span>404 NOT FOUND</span> <br/>
                 //      <span>'Something went wrong'</span>
                 //  </div>
-
-            alert(`${error.name} : ${error.message} `)
+             // alert(`${error.name} : ${error.message} `)
+             throw new Error('Something went wrong.');
         }
-
-
-
         // })
     }
 }
+
 export const  savePhoto = (file) => {
-
     return async (dispatch) =>  {
-
         const response = await profileApi.savePhoto(file)
         // .then(response => {
-
         if (response.data.resultCode === 0){
-
             dispatch(savePhotoSuccess(response.data.data.photos));
         }
 
@@ -189,30 +159,18 @@ export const  savePhoto = (file) => {
 }
 
 export const  editProfile = (profile) =>async (dispatch,getState) =>  {
-
-       const userId = getState().auth.id
-
+    const userId = getState().auth.id
     const response = await profileApi.editProfile(profile)
         // .then(response => {
-
-        if (response.data.resultCode === 0){
-
-            dispatch(profileThunkCreator(userId));
+    if (response.data.resultCode === 0){
+        dispatch(profileThunkCreator(userId));
         }else {
             dispatch(stopSubmit('editProfile', {_error: response.data.messages}));
             return Promise.reject(response.data.messages)
         }
-
-
 }
 
-
-
-
 export default profReducer
-
-
-
 
 // if (action.type=== ADD_POST){
 //     let newPost = {

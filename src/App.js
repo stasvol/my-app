@@ -6,24 +6,23 @@ import {compose} from "redux";
 import store from "./Redux/reduxStore";
 import {withLazySuspense} from "./Hock/withLazySuspense";
 import {initializeApp} from "./Redux/app_reducer";
-import Music from './Components/Music/Music';
 import NavContainer from "./Components/Nav/NavContainer";
 import HeaderContainer from "./Components/Header/HeaderContainer";
-import Login from "./Components/Login/login";
-import SettingContainer from "./Components/Settings/SettingContainer";
-import NewsContainer from "./Components/News/NewsContainer";
 import Preloader from "./Components/Common/preloader/preloader";
-import Error from "./Error/error";
-
-import './App.css';
+// import Music from './Components/Music/Music';
+// import LoginContainer from "./Components/Login/loginContainer";
+// import SettingContainer from "./Components/Settings/SettingContainer";
+// import NewsContainer from "./Components/News/NewsContainer";
+// import Error from "./Error/error";
 import {
-    PathRedirect,
+    PathRedirect, PathVk, PathMusic, PathLogin,
+    PathNewsContainer, PathSettingContainer, PathError,
     // PathDialogContainer,
     // PathProfileContainer,
     // PathUserContainer,
-    PathVk, PathMusic, PathNewsContainer, PathSettingContainer, PathError
 } from "./PathPages/PathPages";
 
+import './App.css';
 // const DialogContainer = React.lazy(() => import("./Components/Dialogs/DialogContainer"));
 // const ProfileContainer = React.lazy(() => import("./Components/Profile/ProfileContainer"));
 // const UserContainer = React.lazy(() => import("./Components/Users/UserContainer"));
@@ -31,11 +30,7 @@ const PathDialogContainer = React.lazy(() => import("./PathPages/PathPages"));
 const PathProfileContainer = React.lazy(() => import("./PathPages/PathPages"));
 const PathUserContainer = React.lazy(() => import("./PathPages/PathPages"));
 
-
-
-
 const App = ({initialized}) => {
-
     // componentDidMount(props) {
     //     this.props.initializeApp()
     // }
@@ -51,10 +46,7 @@ const App = ({initialized}) => {
                </>
            )
        }
-
-
-        return (
-
+       return (
             <div className="app-wrapper">
                 <HeaderContainer/>
                 <NavContainer/>
@@ -68,7 +60,7 @@ const App = ({initialized}) => {
                             <Route path={'/User'} render={withLazySuspense(PathUserContainer)}/>
                             <Route path={'/Music/vk'} render={PathVk}/>
                             <Route exact path={'/Music'} render={PathMusic}/>
-                            <Route path={'/Login'} render={() => <Login/>}/>
+                            <Route path={'/Login'} render={PathLogin}/>
                             <Route  path={'/News/:userId?'} render={PathNewsContainer}/>
                             <Route path={'/Setting'} render={PathSettingContainer}/>
 

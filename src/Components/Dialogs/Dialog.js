@@ -1,22 +1,23 @@
-import React, {Component} from 'react';
+import React from 'react';
 import  { Redirect } from 'react-router-dom'
-import classes from './Dialog.module.css';
 import {NavLink} from "react-router-dom";
 import DialogUser from './DialogUser/DialogUser';
 import MessageUser from './MessageUser/MessageUser';
-import {addNewMessageActionCreator, handleChangeDialogActionCreator} from '../../Redux/dialog_reducer';
 import DialogForm from "./Dialog.Form";
+// import {addNewMessageActionCreator, handleChangeDialogActionCreator}
+// from '../../Redux/dialog_reducer';
 
+import classes from './Dialog.module.css';
 
-
-const Dialogs = (props) => {
+const Dialogs = ({DialogData,MessageUserData,addMessage}) => {
     // let state = props.store.getState().dialogPage
-
-    let DialogUserData = props.state.DialogData.map((obj,i) => <DialogUser name={obj.name} id={obj.id} img={obj.img} key={i}/>);
-    let MessageData = props.state.MessageUserData.map((message, i) => <MessageUser message={message.message} id={message.id} key={i}/>);
-
+    //
+    // let DialogUserData = DialogData.map(({name,id,img}) =>
+    // <DialogUser name={name} id={id} img={img} key={id}/>);
+    // let MessageData = MessageUserData.map(({message,id}) =>
+    // <MessageUser message={message} id={id} key={id}/>);
+    //
     // let newMessage = React.createRef();
-
     // const addNewMessage = () =>{
     //     // let messageText = newMessage.current.value;
     //     props.addMessage();
@@ -34,7 +35,7 @@ const Dialogs = (props) => {
 
     const onSubmit =(value) =>{
         // alert(value.newMessageText)
-        props.addMessage(value.newMessageText)
+        addMessage(value.newMessageText)
 
     }
 
@@ -42,7 +43,9 @@ const Dialogs = (props) => {
 
         <div className={classes.bg}>
             <div className={classes.dialog}>
-                { DialogUserData }
+                {
+                  DialogData.map(({name,id,img}) => <DialogUser name={name} id={id} img={img} key={id}/>)
+                }
                 {/*<DialogUser name={avatar[8].name} id={avatar[8].id}  img={avatar[8].img}/>*/}
                 {/*<DialogUser name={DialogData[1].name} id={DialogData[1].id}/>*/}
                 {/*<DialogUser name={DialogData[2].name} id={DialogData[2].id}/>*/}
@@ -56,14 +59,15 @@ const Dialogs = (props) => {
 
                 <DialogForm onSubmit={onSubmit} />
 
-                 {/*<textarea  onChange={handleChange} value={props.state.newMessageText}  placeholder={'add message'}> </textarea>*/}
-                 {/*<button onClick={ addNewMessage } className={classes.btn}>Add Message</button>*/}
-
-                <div className={classes.circle}>
-                 <div className={`${classes.circle} ${classes.active}`}>{MessageData}</div>
-                </div>
-
-
+                {/*<textarea  onChange={handleChange} value={props.state.newMessageText}  placeholder={'add message'}> </textarea>*/}
+                {/*<button onClick={ addNewMessage } className={classes.btn}>Add Message</button>*/}
+                {/*<div className={classes.circle}>*/}
+                 <div className={`${classes.circle} ${classes.active}`}>
+                     {
+                       MessageUserData.map(({message,id}) => <MessageUser message={message} id={id} key={id}/>)
+                     }
+                 </div>
+                {/*</div>*/}
                 {/*<MessageUser message={MessageUserData[0].message} id={MessageUserData[0].id}/>*/}
                 {/*<MessageUser message={MessageUserData[1].message} id={MessageUserData[1].id}/>*/}
                 {/*<MessageUser message={MessageUserData[2].message}/>*/}

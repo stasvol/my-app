@@ -1,14 +1,14 @@
-import React, {Component} from 'react';
-import classes from './Header.module.css';
-import Header from "./Header";
-import {authThunkCreator, loginOut, setAuthUserData} from "../../Redux/auth_reducer";
+import React from 'react';
 import {connect} from "react-redux";
-import * as axios from "axios";
-import {userApi} from "../../Api/api";
 
+import Header from "./Header";
+import { loginOut } from "../../Redux/auth_reducer";
+// import * as axios from "axios";
+// import {userApi} from "../../Api/api";
+// import classes from './Header.module.css';
 
-class HeaderContainer extends React.Component {
-
+const HeaderContainer = ({auth,isAuth,login}) => (
+    <Header auth={auth} isAuth={isAuth} login={login} />
     // componentDidMount(props) {
     //      this.props.authThunkCreator (this.props.id, this.props.email, this.props.login,this.props.isAuth)
     //     // userApi.loginUser().then(data => {
@@ -20,18 +20,12 @@ class HeaderContainer extends React.Component {
     //     // });
     //
     // }
-
-    render() {
-        return (
-
-            <Header {...this.props} />
         )
-    }
-}
-let mapStateToProps = (state) => ({
-    auth: state.auth,
-    isAuth: state.auth.isAuth,
-    login: state.auth.login
+
+let mapStateToProps = ({auth:{auth,isAuth,login}}) => ({
+    auth,
+    isAuth,
+    login,
 });
 
 export default connect ( mapStateToProps,{loginOut}) (HeaderContainer);

@@ -1,4 +1,4 @@
-import {userApi} from "../Api/api";
+import {userApi} from "../Api/userApi";
 import {updateObjectInArray} from "../Utility/object_helper";
 
 const FOLLOW = 'FOLLOW';
@@ -148,8 +148,7 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
     }
 }
 
-
-   const followUnfollowFlow = async(dispatch, userId, ApiMethod,ActionCreator) => {
+const followUnfollowFlow = async(dispatch, userId, ApiMethod,ActionCreator) => {
 
        dispatch(disableButtonFol(true, userId))
        const data = await ApiMethod(userId)
@@ -160,7 +159,6 @@ export const getUsersThunkCreator = (currentPage, pageSize) => {
        dispatch(disableButtonFol(false, userId))
 
 }
-
 
 export const FollowThunkCreator = (userId) => {
 
@@ -179,6 +177,7 @@ export const FollowThunkCreator = (userId) => {
         // });
     }
 }
+
 export const unFollowThunkCreator = (userId) => {
 
     return async (dispatch) => {
@@ -193,7 +192,6 @@ export const unFollowThunkCreator = (userId) => {
         //     dispatch(ActionCreator(userId))
         // }
         // dispatch(disableButtonFol(false, userId))
-
         // });
     }
 }
