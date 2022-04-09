@@ -1,16 +1,15 @@
+export const getUsersSelector = ({ usersPage: { users } }) => users;
 
-export const getUsersSelector = ({usersPage:{users}}) => users
+export const pageSizeSelector = ({ usersPage: { pageSize } }) => pageSize;
 
-export const pageSizeSelector = ({usersPage:{pageSize}}) => pageSize
+export const totalUsersCountSelector = ({ usersPage: { totalUsersCount } }) =>
+  totalUsersCount;
 
-export const totalUsersCountSelector = ({usersPage:{totalUsersCount}}) => totalUsersCount
+export const currentPageSelector = ({ usersPage: { currentPage } }) => currentPage;
 
-export  const currentPageSelector = ({usersPage:{currentPage}}) => currentPage
+export const isLoadingSelector = ({ usersPage: { isLoading } }) => isLoading;
 
-export const isLoadingSelector = ({usersPage:{isLoading}}) => isLoading
-
-export const disableButtonSector = ({usersPage:{disableButton}}) => disableButton
-
+export const disableButtonSector = ({ usersPage: { disableButton } }) => disableButton;
 
 // export const getUsersSelector = (state) => {
 //     return state.usersPage.users

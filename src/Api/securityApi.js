@@ -1,9 +1,7 @@
-import {addAxios} from "./api";
+import { addAxios } from './api';
 
 export const securityApi = {
-
-    getCaptchaUrl()
-    {
-        return addAxios.get(`security/get-captcha-url`)
-    }
-}
+  getCaptchaUrl() {
+    return addAxios.get(`security/get-captcha-url`);
+  },
+};

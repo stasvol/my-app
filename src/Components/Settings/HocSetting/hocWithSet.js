@@ -1,17 +1,19 @@
-import React from 'react'
-import {Redirect} from "react-router-dom";
-import {connect} from "react-redux";
+import React from 'react';
+import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
- const matStateToPropsRedir = ({setAuth:{isSetAuth}}) =>({isSetAuth})
+const matStateToPropsRedir = ({ setAuth: { isSetAuth } }) => ({ isSetAuth });
 
-export const withSetComponent = (Component) => {
-     const withSetComponentContainer = ({isSetAuth,...props}) => {
-        if (!isSetAuth) return <Redirect to={'/Login'}/>
-        return <Component {...props}/>
-    }
-    const withSetComponentRedirect = connect(matStateToPropsRedir) (withSetComponentContainer)
-    return  withSetComponentRedirect
-}
+export const withSetComponent = Component => {
+  const withSetComponentContainer = ({ isSetAuth, ...props }) => {
+    if (!isSetAuth) return <Redirect to="/Login" />;
+    return <Component {...props} />;
+  };
+  const withSetComponentRedirect = connect(matStateToPropsRedir)(
+    withSetComponentContainer,
+  );
+  return withSetComponentRedirect;
+};
 
 // export const withSetComponent = (Component)=>(props) =>{
 //
@@ -19,4 +21,3 @@ export const withSetComponent = (Component) => {
 //     return <Component {...props}/>
 //
 // }
-

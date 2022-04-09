@@ -1,12 +1,12 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const addAxios = axios.create({
-    withCredentials: true,
-    baseURL: 'https://social-network.samuraijs.com/api/1.0/',
-    headers: {
-          "API-KEY": "6ca7206a-79cd-4b75-a7a8-fe4c71b43bb1"
-          // "27d40a8a-efb4-4ff9-9f59-1a96a8bc548d",
-    }
+  withCredentials: true,
+  baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+  headers: {
+    'API-KEY': '6ca7206a-79cd-4b75-a7a8-fe4c71b43bb1',
+    // "27d40a8a-efb4-4ff9-9f59-1a96a8bc548d",
+  },
 });
 
 // export const userApi = {
@@ -49,7 +49,8 @@ export const addAxios = axios.create({
 //
 //     getProfile(userId) {
 //
-//         return addAxios.get(`https://social-network.samuraijs.com/api/1.0/Profile/` + userId)
+//    return addAxios.get(`https://social-network
+//         .samuraijs.com/api/1.0/Profile/` + userId)
 //
 //     },
 //
@@ -91,7 +92,8 @@ export const addAxios = axios.create({
 //
 //     login(email, password, rememberMe = false,captcha=null) {
 //
-//         return addAxios.post(`auth/login`, {email, password, rememberMe,captcha})
+//     return addAxios.post(`auth/login`,
+//     {email, password, rememberMe,captcha})
 //             .then(response => {
 //                 return response.data
 //             })

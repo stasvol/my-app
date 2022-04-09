@@ -1,11 +1,11 @@
-import React, {Suspense} from 'react'
+import React, { Suspense } from 'react';
 
-import {LoadingConst} from "../Constants/PathConst";
+import { LoadingConst } from '../Constants/PathConst';
 
-export const withLazySuspense = Component => (
-    props => (
-        <Suspense fallback={LoadingConst}>
-            <Component {...props}/>
-        </Suspense>
-    )
-)
+export const withLazySuspense = Component => ({ ...props }) => {
+  return (
+    <Suspense fallback={LoadingConst}>
+      <Component {...props} />
+    </Suspense>
+  );
+};

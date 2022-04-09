@@ -1,30 +1,35 @@
-import React from 'react'
+import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import PropTypes from 'prop-types';
 
-import {Textarea} from "../Common/FormControl/formComponent";
-import { maxLength30, minLength3, required} from "../../Utility/ValidateForm/validator";
+import { Textarea } from '../Common/FormControl/formComponent';
+import { maxLength30, minLength3, required } from '../../Utility/ValidateForm/validator';
 
-import classes from "./Dialog.module.css";
+import classes from './Dialog.module.css';
 
 // const maxLength30 =  maxLength(30);
 // const minLength2 =  minLength(2);
 
-let DialogForm = ({ handleSubmit }) =>(
+let DialogForm = ({ handleSubmit }) => (
+  <form onSubmit={handleSubmit}>
+    <div>
+      {/* <label htmlFor="dialog">Add Message</label> */}
+      <Field
+        component={Textarea}
+        name="newMessageText"
+        placeholder="add message"
+        validate={[required, maxLength30, minLength3]}
+      />
+    </div>
+    <button className={classes.btn}>Add Message</button>
+  </form>
+);
+DialogForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
+};
 
-         <form onSubmit={handleSubmit}>
-             <div >
-                 {/*<label htmlFor="dialog">Add Message</label>*/}
-             <Field name={'newMessageText'} component={Textarea}
-                  validate={[required,maxLength30,minLength3]} placeholder={'add message'} />
-             </div>
-             <button  className={classes.btn}>Add Message</button>
-
-         </form>
-
-     )
-
-  DialogForm = reduxForm ({
-    form: 'dialogMessage'
+export default DialogForm = reduxForm({
+  form: 'dialogMessage',
 })(DialogForm);
 
-export default DialogForm
+// export default DialogForm;

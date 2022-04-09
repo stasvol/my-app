@@ -1,14 +1,17 @@
-import React from "react";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import classes from './MessageUser.module.css';
 
-const MessageUser = ({message}) => (
+const MessageUser = ({ message }) => (
+  <div>
+    <ul className={classes.messageUser}>
+      <li>{message}</li>
+    </ul>
+  </div>
+);
+MessageUser.propTypes = {
+  message: PropTypes.string.isRequired,
+};
 
-        <div>
-            <ul className={classes.messageUser}>
-                <li>{message}</li>
-            </ul>
-        </div>
-    )
-
-export default  MessageUser
+export default MessageUser;

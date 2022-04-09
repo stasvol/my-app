@@ -1,4 +1,4 @@
-import {maxLength, minLength} from "../News/NewSetFormValidators";
+import { maxLength, minLength } from '../News/NewSetFormValidators';
 
 export const maxLength30 = maxLength(30);
-export const minLength3 =  minLength(3);
+export const minLength3 = minLength(3);

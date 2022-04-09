@@ -1,8 +1,7 @@
-import React from 'react';
-import {connect} from "react-redux";
+import { connect } from 'react-redux';
 
-import {addChangeText, addPost} from '../../../Redux/prof_reducer';
-import MyPost from "./MyPost";
+import { addChangeText, addPost } from '../../../Redux/prof_reducer';
+import MyPost from './MyPost';
 // import MyContext from "../../../MyContext";
 // const MyPostContainer1 = (props) => {
 //     // let newPostText = React.createRef();
@@ -36,7 +35,8 @@ import MyPost from "./MyPost";
 //                     }
 //                     return (
 //
-//                         <MyPost addChangeText={handleChange} addPost={addNewPost} PostData={props.PostData}
+//     <MyPost addChangeText={handleChange}
+//     addPost={addNewPost} PostData={props.PostData}
 //                                 newText={props.newText} post={'MY POSTS'}/>
 //                     )
 //                 }
@@ -49,25 +49,25 @@ import MyPost from "./MyPost";
 //
 // export default MyPostContainer1
 
-const mapStateToProps = ({profPage:{PostData,newText},post}) => ({
-        PostData,
-        newText,
-        post,
-})
+const mapStateToProps = ({ profPage: { PostData, newText }, post }) => ({
+  PostData,
+  newText,
+  post,
+});
 
-const mapDispatchToProps = (dispatch) =>{
-    return{
-        addChangeText: (newPost) =>{
-            dispatch(addChangeText(newPost));
-        },
+const mapDispatchToProps = dispatch => {
+  return {
+    addChangeText: newPost => {
+      dispatch(addChangeText(newPost));
+    },
 
-        addPost: (newText) =>{
-            let action = addPost(newText);
-            dispatch(action);
-        }
-    }
-}
+    addPost: newText => {
+      const action = addPost(newText);
+      dispatch(action);
+    },
+  };
+};
 
-const MyPostContainer = connect(mapStateToProps,mapDispatchToProps) (MyPost);
+const MyPostContainer = connect(mapStateToProps, mapDispatchToProps)(MyPost);
 
-export default MyPostContainer
+export default MyPostContainer;

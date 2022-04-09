@@ -10,7 +10,8 @@
 //
 //     componentDidMount() {
 //         axios.get(`https://social-network.samuraijs.com/api/1.0/users?
-//         page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+//         page=${this.props.currentPage}
+//         &count=${this.props.pageSize}`).then(response => {
 //             this.props.setUsers(response.data.items);
 //             this.props.setTotalUsersCount(response.data.totalCount);
 //         });
@@ -30,9 +31,12 @@
 //
 //         return (
 //
-//             <UsersF onChangePage={this.onChangePage}  currentPage={this.props.currentPage}
-//                     totalUsersCount={this.props.totalUsersCount} pageSize={this.props.pageSize}
-//                     users={this.props.users} follow={this.props.follow} unfollow={this.props.unfollow}/>
+//   <UsersF onChangePage={this.onChangePage}
+//   currentPage={this.props.currentPage}
+//    totalUsersCount={this.props.totalUsersCount}
+//    pageSize={this.props.pageSize}
+// users={this.props.users} follow={this.props.follow}
+// unfollow={this.props.unfollow}/>
 //
 //         )
 //

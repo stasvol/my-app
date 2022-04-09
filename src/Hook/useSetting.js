@@ -1,12 +1,16 @@
-import React from "react";
+import React from 'react';
 
-export const useSetting = (message,addNewMessage) => {
+export const useSetting = (message, addNewMessage) => {
+  const addMessage = message.map((mes, i) => (
+    <li key={i}>
+      {' '}
+      <div>{mes.message}</div>
+      <div>like : {mes.like}</div>
+    </li>
+  ));
 
-    const addMessage = message.map((mes,i)=> <li key={i}> <div>{mes.message}</div>
-        <div>like : {mes.like}</div>  </li> )
-
-    const  handleClick = (value)=>{
-        addNewMessage(value.newMessage)
-    }
-    return {addMessage,handleClick}
-}
+  const handleClick = value => {
+    addNewMessage(value.newMessage);
+  };
+  return { addMessage, handleClick };
+};

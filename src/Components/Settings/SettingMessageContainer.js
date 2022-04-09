@@ -1,8 +1,7 @@
-import React from 'react';
-import {connect} from "react-redux";
+import { connect } from 'react-redux';
 
-import {addNewPostAC, newPostMesTextAC} from "./Set_reducers/setMesreducer";
-import SettingMessage from "./SettingMessage";
+import { addNewPostAC, newPostMesTextAC } from './Set_reducers/setMesreducer';
+import SettingMessage from './SettingMessage';
 
 // import {addNewPostAC, newPostMesTextAC} from "./State";
 
@@ -23,25 +22,33 @@ import SettingMessage from "./SettingMessage";
 //
 //
 //     return (
-//           <SettingMessage state={props.Store.getState()} changeText={changeText}
-//                           addText={addText} newPostMesText={props.Store.getState().newPostMesText}/>
+//           <SettingMessage state={props.Store.getState()}
+//           changeText={changeText}
+//           addText={addText}
+//       newPostMesText={props.Store.getState().newPostMesText}/>
 //     )
 //
 //     }
 
-    const mapStateToPros = ({posts: {posts, newPostMesText}}) => ({posts, newPostMesText})
+const mapStateToPros = ({ posts: { posts, newPostMesText } }) => ({
+  posts,
+  newPostMesText,
+});
 
-    const mapDispatchToProps = (dispatch) => {
-        return {
-            changeText: (textNew) => {
-                dispatch(newPostMesTextAC(textNew))
-            },
-            addText: (newPostMesText) => {
-                dispatch(addNewPostAC(newPostMesText))
-            }
-        }
-    }
+const mapDispatchToProps = dispatch => {
+  return {
+    changeText: textNew => {
+      dispatch(newPostMesTextAC(textNew));
+    },
+    addText: newPostMesText => {
+      dispatch(addNewPostAC(newPostMesText));
+    },
+  };
+};
 
- const SettingMessageContainer = connect(mapStateToPros, mapDispatchToProps)(SettingMessage)
+const SettingMessageContainer = connect(
+  mapStateToPros,
+  mapDispatchToProps,
+)(SettingMessage);
 
-export default SettingMessageContainer
+export default SettingMessageContainer;

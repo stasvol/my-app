@@ -1,22 +1,36 @@
 import React from 'react';
-import ProfInfo from './ProfilInfo/ProfilInfo'
-import ProfAvatar from './ProfAvatar/ProfAvatar'
-import MyPostContainer from "./MyPosts/MyPostContainer";
+import PropTypes from 'prop-types';
 
-const Profile = ({profile,status,updateStatus,isOwner,savePhoto,editProfile}) => (
+import ProfInfo from './ProfilInfo/ProfilInfo';
+import ProfAvatar from './ProfAvatar/ProfAvatar';
+import MyPostContainer from './MyPosts/MyPostContainer';
 
-        <div>
-            <ProfInfo profile={profile} status={status} updateStatus={updateStatus}
-                      isOwner={isOwner} savePhoto={savePhoto}
-                      editProfile={editProfile}/>
-            <ProfAvatar />
-            <MyPostContainer />
+const Profile = ({ profile, status, updateStatus, isOwner, savePhoto, editProfile }) => (
+  <div>
+    <ProfInfo
+      editProfile={editProfile}
+      isOwner={isOwner}
+      profile={profile}
+      savePhoto={savePhoto}
+      status={status}
+      updateStatus={updateStatus}
+    />
+    <ProfAvatar />
+    <MyPostContainer />
 
-            {/*<MyPost PostData={props.state.PostData} newText={props.state.newText} dispatch={props.dispatch}*/}
-            {/*        addPost={props.addPost}  addChangeText={props.addChangeText}*/}
-            {/*        post={'MY POSTS'}/>*/}
+    {/* <MyPost PostData={props.state.PostData}
+     newText={props.state.newText} dispatch={props.dispatch} */}
+    {/*        addPost={props.addPost}  addChangeText={props.addChangeText} */}
+    {/*        post={'MY POSTS'}/> */}
+  </div>
+);
+Profile.propTypes = {
+  profile: PropTypes.shape().isRequired,
+  status: PropTypes.string.isRequired,
+  updateStatus: PropTypes.func.isRequired,
+  isOwner: PropTypes.bool.isRequired,
+  savePhoto: PropTypes.func.isRequired,
+  editProfile: PropTypes.func.isRequired,
+};
 
-        </div>
-    )
-
-export default Profile
+export default Profile;

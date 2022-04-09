@@ -1,33 +1,49 @@
-import {useState} from "react";
+import { useState } from 'react';
 
-export const useNews = (SetCurPage,countUsersSet,
-                        pageSizeSet,showPhoto,saveContacts) => {
-    const [editMod, setEditMod] = useState(false)
+export const useNews = (
+  SetCurPage,
+  countUsersSet,
+  pageSizeSet,
+  showPhoto,
+  saveContacts,
+) => {
+  const [editMod, setEditMod] = useState(false);
 
-    const onCurPageSet = (currentPageSet) => {
-        SetCurPage(currentPageSet)
+  const onCurPageSet = currentPageSet => {
+    SetCurPage(currentPageSet);
+  };
+
+  const countPagesSet = Math.ceil(countUsersSet / pageSizeSet / 100);
+  const pagesSet = [];
+  for (let i = 1; i <= countPagesSet; i++) {
+    pagesSet.push(i);
+  }
+
+  const addPhoto = e => {
+    if (e.target.files.length) {
+      showPhoto(e.target.files[0]);
     }
+  };
 
-    const countPagesSet = Math.ceil((countUsersSet / pageSizeSet) / 100)
-    const pagesSet = []
-    for (let i = 1; i <= countPagesSet; i++)
-        pagesSet.push(i)
+  const onSubmit = formData => {
+    saveContacts(formData);
+    setEditMod(false);
+  };
 
-    const addPhoto = (e) => {
-        if (e.target.files.length) {
-            showPhoto(e.target.files[0])
-        }
-    }
+  const handleClick = page => onCurPageSet(page);
+  const handleEditContactNew = () => {
+    setEditMod(true);
+  };
 
-    const onSubmit = (formData) => {
-        saveContacts(formData)
-        setEditMod(false)
-    }
-
-    const handleClick = (page) => onCurPageSet(page)
-    const handleEditContactNew = () =>{setEditMod(true)}
-
-    return {editMod, setEditMod,onCurPageSet,pagesSet,
-            countPagesSet,addPhoto,onSubmit,
-            handleClick,handleEditContactNew}
-}
+  return {
+    editMod,
+    setEditMod,
+    onCurPageSet,
+    pagesSet,
+    countPagesSet,
+    addPhoto,
+    onSubmit,
+    handleClick,
+    handleEditContactNew,
+  };
+};

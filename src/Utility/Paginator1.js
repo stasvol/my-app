@@ -3,7 +3,8 @@
 // import {useState} from "react";
 //
 //
-// const Paginator = ({currentPage,onChangePage,totalUsersCount,pageSize,portionSize=10}) => {
+// const Paginator = ({currentPage,onChangePage,
+// totalUsersCount,pageSize,portionSize=10}) => {
 //
 //
 //     let pageCount = Math.ceil((totalUsersCount/pageSize)/100)
@@ -19,10 +20,10 @@
 //     return (
 //         <div className={classes.paginator}>
 //             {portionNumber > 1 &&
-//                 <button onClick={() =>{setPortionNumber(portionNumber-1)}}>PREV</button> }
+//  <button onClick={() =>{setPortionNumber(portionNumber-1)}}>PREV</button> }
 //
 //             {pages
-//                 .filter(p =>p >= leftPortionPageNumber && p <= rightPortionPageNumber)
+//   .filter(p =>p >= leftPortionPageNumber && p <= rightPortionPageNumber)
 //                 .map((p) => {
 //                     return <span className={ ({
 //                     [classes.selectedPage] : currentPage === p},
@@ -33,7 +34,8 @@
 //                               }} >{p}</span>
 //                     })}
 //             { portionCount > portionNumber &&
-//                 <button onClick={() => {setPortionNumber(portionNumber + 1)}}>NEXT</button> }
+//  <button onClick={() => {setPortionNumber(portionNumber + 1)}}>
+//  NEXT</button> }
 //
 //
 //
@@ -42,8 +44,9 @@
 //             // <div className={classes.pagesNum}>
 //             //     { pages.map((p ,i) => {
 //             //
-//             //         return  <span key={i} className={ currentPage === p  ?  classes.active : classes.pageNum }
-//             //                       onClick={(e) =>{onChangePage(p)}}> {p} </span>}) }
+//  //         return  <span key={i} className={ currentPage === p  ?
+//  classes.active : classes.pageNum }
+//             // onClick={(e) =>{onChangePage(p)}}> {p} </span>}) }
 //             //
 //             // </div>
 //

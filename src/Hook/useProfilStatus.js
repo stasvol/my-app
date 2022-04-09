@@ -1,30 +1,27 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from 'react';
 
-export const useProfilStatus = (updateStatus,...props) => {
+export const useProfilStatus = (updateStatus, ...props) => {
+  const [editMode, setEditMode] = useState(false);
+  const [statusNew, setStatus] = useState(props.status);
 
-    const [editMode, setEditMode] = useState(false);
-    const [status, setStatus] = useState(status);
+  const activeEditMode = () => {
+    setEditMode(true);
+  };
 
-    const activeEditMode = () => {
-        setEditMode(true)
+  const deActiveEditMode = () => {
+    setEditMode(false);
+    updateStatus(statusNew);
+  };
+
+  const changeStatus = e => {
+    setStatus({ status: e.target.value });
+  };
+
+  useEffect(() => {
+    if (statusNew !== props.status) {
+      setStatus({ status: props.status });
     }
+  }, [statusNew, props.status]);
 
-    const deActiveEditMode = () => {
-        setEditMode(false)
-        updateStatus(status)
-
-    }
-
-    const changeStatus = (e) => {
-        setStatus({status: e.target.value})
-
-    }
-
-    useEffect(()=>{
-        if(status !== props.status){
-            setStatus({status: props.status})
-        }
-    },[status,props.status])
-
-    return {editMode,status,activeEditMode,deActiveEditMode,changeStatus}
-}
+  return { editMode, statusNew, activeEditMode, deActiveEditMode, changeStatus };
+};

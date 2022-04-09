@@ -1,5 +1,5 @@
-import React from "react";
-import anim from "./../../Photo/Images/anim.gif"
+import React from 'react';
+import anim from '../../Photo/Images/anim.gif';
 
-const Loading = () => <img src={anim} alt={'Loading...'} />
-export default Loading
+const Loading = () => <img alt="Loading..." src={anim} />;
+export default Loading;

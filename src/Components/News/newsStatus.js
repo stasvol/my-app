@@ -1,10 +1,12 @@
-import React from "react"
+import React from 'react';
 // import {Field, reduxForm} from "redux-form";
 // import {maxLength, minLength, required} from "./NewSetFormValidators";
 // import {Input, Textarea} from "./FormControl";
 // import {useState, useEffect} from "react";
-import {NewsStatusFormRedux} from "./NewsStatusForm";
-import {useNewsStatus} from "../../Hook/useNewsStatus";
+import PropTypes from 'prop-types';
+
+import { NewsStatusFormRedux } from './NewsStatusForm';
+import { useNewsStatus } from '../../Hook/useNewsStatus';
 // class NewsStatus extends React.Component {
 //
 //     state = {
@@ -49,13 +51,15 @@ import {useNewsStatus} from "../../Hook/useNewsStatus";
 //                 {!this.state.editMod
 //                     ?
 //                 <div>
-//                     <span onDoubleClick={this.activeEditMod.bind(this)}>{this.props.status  ? this.props.status : "I'm COOL !"}</span>
+//  <span onDoubleClick={this.activeEditMod.bind(this)}>
+//  {this.props.status  ? this.props.status : "I'm COOL !"}</span>
 //                 </div>
 //                      :
 //                 <div>
-//                     <NewsStatusFormRedux onSubmit={this.deActiveEditMod.bind(this)}/>
-//                     {/*<input onChange={this.updateChangeStatus} autoFocus={true}*/}
-//                     {/*       onBlur={this.deActiveEditMod.bind(this)} value={this.state.status }/>*/}
+//  <NewsStatusFormRedux onSubmit={this.deActiveEditMod.bind(this)}/>
+//   {/*<input onChange={this.updateChangeStatus} autoFocus={true}*/}
+//    {/* onBlur={this.deActiveEditMod.bind(this)}
+//    value={this.state.status }/>*/}
 //                 </div>
 //                 }
 //             </div>
@@ -74,8 +78,9 @@ import {useNewsStatus} from "../../Hook/useNewsStatus";
 //
 //     return(
 //         <form  onSubmit={handleSubmit}>
-//             <Field name={'newPutStatus'} component={Input} placeholder={'add status'}
-//                   validate={[required,maxLength30,minLength3]} />
+//  <Field name={'newPutStatus'} component={Input}
+//  placeholder={'add status'}
+//  validate={[required,maxLength30,minLength3]} />
 //         </form>
 //     )
 // }
@@ -84,50 +89,54 @@ import {useNewsStatus} from "../../Hook/useNewsStatus";
 //
 // export default NewsStatus
 
-const NewsStatus = ({newPutStatusThunk,status}) => {
+const NewsStatus = ({ newPutStatusThunk, status }) => {
+  // const [editMod, setEditMod] = useState(false);
+  // const [statusNew, setStatus] = useState(status);
+  //
+  // useEffect(()=>{
+  //     setStatus(status)
+  // }, [status])
+  //
+  //
+  // const activeEditMod = () => {
+  //
+  //     setEditMod(true);
+  //
+  //     // this.props.newSetStatusThunk()
+  // }
+  // const deActiveEditMod = (value) => {
+  //     setEditMod(false);
+  //     newPutStatusThunk(value.newPutStatus)
+  //     // (this.state.status)
+  //     // console.log(value.newPutStatus)
+  // }
+  const { editMod, statusNew, activeEditMod, deActiveEditMod } = useNewsStatus(
+    newPutStatusThunk,
+    status,
+  );
 
-    // const [editMod, setEditMod] = useState(false);
-    // const [statusNew, setStatus] = useState(status);
-    //
-    // useEffect(()=>{
-    //     setStatus(status)
-    // }, [status])
-    //
-    //
-    // const activeEditMod = () => {
-    //
-    //     setEditMod(true);
-    //
-    //     // this.props.newSetStatusThunk()
-    // }
-    // const deActiveEditMod = (value) => {
-    //     setEditMod(false);
-    //     newPutStatusThunk(value.newPutStatus)
-    //     // (this.state.status)
-    //     // console.log(value.newPutStatus)
-    // }
-const {editMod, statusNew, activeEditMod, deActiveEditMod} = useNewsStatus(newPutStatusThunk,status)
-
-    return (
+  return (
+    <div>
+      {!editMod ? (
         <div>
-            {!editMod
-                ?
-                <div>
-                    <span onDoubleClick={activeEditMod}>{status ? status : "I'm COOL !"}</span>
-                </div>
-                :
-                <div>
-                    <NewsStatusFormRedux  onSubmit={deActiveEditMod} value={statusNew}/>
-                    {/*<input onChange={this.updateChangeStatus} autoFocus={true}*/}
-                    {/*       onBlur={this.deActiveEditMod.bind(this)} value={this.state.status }/>*/}
-                </div>
-            }
+          <span onDoubleClick={activeEditMod}>{status || "I'm COOL !"}</span>
         </div>
-    )
-
-}
-
-export default NewsStatus
+      ) : (
+        <div>
+          <NewsStatusFormRedux onSubmit={deActiveEditMod} value={statusNew} />
+          {/* <input onChange={this.updateChangeStatus} autoFocus={true} */}
+          {/* eslint-disable-next-line max-len */}
+          {/*       onBlur={this.deActiveEditMod.bind(this)} value={this.state.status }/> */}
+        </div>
+      )}
+    </div>
+  );
+};
+NewsStatus.propTypes = {
+  newPutStatusThunk: PropTypes.func.isRequired,
+  status: PropTypes.string.isRequired,
+};
+export default NewsStatus;
 // const maxLength30 = maxLength(30);
 // const minLength3 = minLength(3);
 //
@@ -138,12 +147,14 @@ export default NewsStatus
 //
 //     return (
 //         <form onSubmit={handleSubmit}>
-//             <Field name={'newPutStatus'} component={Input} placeholder={'add status'}
-//                    validate={[required, maxLength30, minLength3]} />
+// <Field name={'newPutStatus'} component={Input}
+// placeholder={'add status'}
+//   validate={[required, maxLength30, minLength3]} />
 //         </form>
 //     )
 // }
-// const NewsStatusFormRedux = reduxForm({form: 'newsForm'})(NewsStatusForm)
+// const NewsStatusFormRedux = reduxForm({form: 'newsForm'})
+// (NewsStatusForm)
 //
 //
 // export default NewsStatus

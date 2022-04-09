@@ -1,25 +1,29 @@
-import React from 'react';
-import {connect} from "react-redux";
+import { connect } from 'react-redux';
 
-import {addNewMessageAC, updateNewTextAC} from './Set_reducers/setReducer'
-import Setting from "./Setting";
+import { addNewMessageAC, updateNewTextAC } from './Set_reducers/setReducer';
+import Setting from './Setting';
 
 // const SettingContainer = (props) => {
 //
 //     // let state = props.Store.getState()
 //
 //     // let state = {
-//     //     user: [{id: 1, name: 'Ivan', age: 25}, {id: 2, name: 'Andre', age: 40}, {id: 3, name: 'Tom', age: 50}],
-//     //     message: [{id: 1, message: 'Hello'}, {id: 2, message: 'Hi, friend'}],
+//     //     user: [{id: 1, name: 'Ivan', age: 25},
+//     {id: 2, name: 'Andre', age: 40}, {id: 3, name: 'Tom', age: 50}],
+//     //     message: [{id: 1, message: 'Hello'},
+//     {id: 2, message: 'Hi, friend'}],
 //     //     newMessage: 'Hello World'
 //     // }
-//     // let addUser = state.user.map((obj, i) => <li key={i}>name: {obj.name}, age: {obj.age}</li>);
-//     // let addMessage = state.message.map((text, i) => <li key={i}>{text.message}</li>)
+//     // let addUser = state.user.map((obj, i) =>
+//     <li key={i}>name: {obj.name}, age: {obj.age}</li>);
+//     // let addMessage = state.message.map((text, i) =>
+//     <li key={i}>{text.message}</li>)
 //     //
 //     // // let newMessage = React.createRef()
 //     //
 //     // const handleClick = () => {
-//     //     let userNew = {id: 4, name: 'Lesya', age: 19, message: state.newText}
+//     //     let userNew = {id: 4,
+//     name: 'Lesya', age: 19, message: state.newText}
 //     //     state.user.push(userNew)
 //     //
 //     //     console.log(state.user)
@@ -36,7 +40,8 @@ import Setting from "./Setting";
 //     //
 //     //     console.log(newText)
 //     // }
-//    // const addUser = props.state.user.map((user,i) => <li key={i}><div>name: {user.name} </div>
+//    // const addUser = props.state.user.map((user,i) =>
+//    <li key={i}><div>name: {user.name} </div>
 //    //     <div>age: {user.age}</div></li>)
 //
 //
@@ -58,33 +63,30 @@ import Setting from "./Setting";
 //     props.Store.dispatch(addNewMessageAC());
 //  }
 //
-//         return    <Setting Store={props.Store} state={props.Store.getState()}  updateNewText={updateNewText}  addNewMessage={addNewMessage}  newMessage={props.Store.getState().newMessage} />
+//         return    <Setting Store={props.Store} state={props.Store.getState()}
+//         updateNewText={updateNewText}  addNewMessage={addNewMessage}
+//         newMessage={props.Store.getState().newMessage} />
 //
 //     }
 
-  const  mapStateToProps = ({message:{message,newMessage}}) =>{
-       return {
-           // state: state.message,
-           message,
-           newMessage
-       }
+const mapStateToProps = ({ message: { message, newMessage } }) => {
+  return {
+    // state: state.message,
+    message,
+    newMessage,
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    updateNewText: newTextMes => {
+      dispatch(updateNewTextAC(newTextMes));
+    },
+    addNewMessage: newMessage => {
+      dispatch(addNewMessageAC(newMessage));
+    },
+  };
+};
 
-    }
-   const mapDispatchToProps = (dispatch) => {
-       return {
+const SettingContainer = connect(mapStateToProps, mapDispatchToProps)(Setting);
 
-           updateNewText: (newTextMes) => {
-               dispatch(updateNewTextAC(newTextMes))
-           },
-           addNewMessage: (newMessage) =>{
-               dispatch(addNewMessageAC(newMessage))
-
-           }
-       }
-}
-
-
-const SettingContainer = connect(mapStateToProps,mapDispatchToProps)(Setting)
-
-export default  SettingContainer
-
+export default SettingContainer;

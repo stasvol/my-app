@@ -10,8 +10,10 @@
 //     componentDidMount() {
 //         // if (this.props.users.users.length === 0) {
 //         //     // (function () {
-//             axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=
-//             ${this.props.pageSizeSet}&page=${this.props.currentPageSet}`).then(response => {
+//             axios.get(`https://social-network.samuraijs
+//             .com/api/1.0/users?count=
+//             ${this.props.pageSizeSet}&page=${this.props.currentPageSet}`)
+//             .then(response => {
 //
 //                 this.props.settingAddUser(response.data.items)
 //                 this.props.settingUserTotalCount(response.data.totalCount)
@@ -33,7 +35,7 @@
 //     //             {
 //     //                 id: 2, photoUrl: "https://i.pinimg
 //     .com/originals/b4/98/f9/b498f91f653cd9ed231209b12fac64c7.jpg",
-//     //                 followed: false, name: 'Tom', status: "I'm  authorised"
+//     //    followed: false, name: 'Tom', status: "I'm  authorised"
 //     //             },
 //     //         ]
 //     //     )
@@ -62,7 +64,8 @@
 //
 //     // render() {
 //     //
-//     //        const countPagesSet = Math.ceil((this.props.countUsersSet / this.props.pageSizeSet )/100)
+//     // const countPagesSet = Math.ceil((this.props
+//     .countUsersSet / this.props.pageSizeSet )/100)
 //     //
 //     //        const pagesSet =[];
 //     //
@@ -75,12 +78,13 @@
 //     //
 //     //     return (
 //     //         <div>
-//     //             {/*<button onClick={setAddUserButton}>ADD USERS</button>*/}
+//     //  {/*<button onClick={setAddUserButton}>ADD
+//     USERS</button>*/}
 //     //             <h3>USERS</h3>
 //     //             <div className={classes.marg}>
 //     //             {
 //     //                 pagesSet.map((p,i) =>{
-//     //                     return  <span onClick={(e)=>{this.onCurPageSet(p)}}
+//     //  return  <span onClick={(e)=>{this.onCurPageSet(p)}}
 //     key={i} className={ this.props.currentPageSet === p
 //     //                         ?  classes.active
 //     //                         : classes.pag}>{p}</span>
@@ -88,7 +92,8 @@
 //     //             }
 //     //             </div>
 //     //             {/*<div className={classes.marg}>*/}
-//     //             {/*    <span className={`${classes.pag} ${classes.active}`}>1</span>*/}
+//     //    {/*    <span className={`${classes.pag}
+//     ${classes.active}`}>1</span>*/}
 //     //             {/*    <span className={classes.pag}>2</span>*/}
 //     //             {/*    <span className={classes.pag}>3</span>*/}
 //     //             {/*    <span className={classes.pag}>4</span>*/}
@@ -106,7 +111,7 @@
 //     //                         </div>
 //     //                         <div>
 //     //                             <span><b>{user.name}</b></span>
-//     //                             <div>{new Date().toLocaleDateString()}</div>
+//     //     <div>{new Date().toLocaleDateString()}</div>
 //     //                         </div>
 //     //                         <div>
 //     //                             <span>status: <i>{user.status}</i></span>

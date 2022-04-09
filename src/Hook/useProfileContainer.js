@@ -1,23 +1,27 @@
-import {useEffect} from "react";
+import { useCallback, useEffect } from 'react';
 
-export const useProfileContainer = (match,authorisedUserId,getUsers,getStatus,history) => {
+export const useProfileContainer = (
+  match,
+  authorisedUserId,
+  getUsers,
+  getStatus,
+  history,
+) => {
+  const userUpdateProfile = useCallback(() => {
+    let { userId } = match.params;
 
-    const userUpdateProfile = () => {
-        let userId = match.params.userId;
-
-        if (!userId){
-
-            userId = authorisedUserId
-            if (!userId) {
-                userId = history.push('/login')
-            }
-        }
-        getUsers(userId)
-        getStatus(userId);
+    if (!userId) {
+      userId = authorisedUserId;
+      if (!userId) {
+        userId = history.push('/login');
+      }
     }
-    useEffect(()=>{
-        userUpdateProfile()
-    },[match.params.userId])
+    getUsers(userId);
+    getStatus(userId);
+  }, [match.params, getUsers, getStatus, authorisedUserId, history]);
+  useEffect(() => {
+    userUpdateProfile();
+  }, [match.params.userId, userUpdateProfile]);
 
-    return {userUpdateProfile,getUsers,getStatus}
-}
+  return { userUpdateProfile, getUsers, getStatus };
+};

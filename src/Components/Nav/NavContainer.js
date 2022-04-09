@@ -1,19 +1,17 @@
-import React from 'react'
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-import Nav from "./Nav";
-import {siteBarActionCreator} from "../../Redux/sitebar_reducer";
+import Nav from './Nav';
+import { siteBarActionCreator } from '../../Redux/sitebar_reducer';
 
-const mapStateToProps = ({siteBar:{siteBarNav}}) => siteBarNav
+const mapStateToProps = ({ siteBar: { siteBarNav } }) => siteBarNav;
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        changeClick: (userId) => {
-            dispatch(siteBarActionCreator(userId));
-
-        },
-    }
-}
+const mapDispatchToProps = dispatch => {
+  return {
+    changeClick: userId => {
+      dispatch(siteBarActionCreator(userId));
+    },
+  };
+};
 // const mapDispatchToProps = { changeClick: siteBarActionCreator };
 const NavContainer = connect(mapStateToProps, mapDispatchToProps)(Nav);
-export default NavContainer
+export default NavContainer;

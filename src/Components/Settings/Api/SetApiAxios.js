@@ -1,35 +1,37 @@
-import React from 'react'
-import axios from "axios";
+import axios from 'axios';
 
 export const setApiAxios = axios.create({
-    baseURL:'https://social-network.samuraijs.com/api/1.0/',
-    withCredentials: true,
-    headers:{
-        "API-KEY": "6ca7206a-79cd-4b75-a7a8-fe4c71b43bb1"
-    }
+  baseURL: 'https://social-network.samuraijs.com/api/1.0/',
+  withCredentials: true,
+  headers: {
+    'API-KEY': '6ca7206a-79cd-4b75-a7a8-fe4c71b43bb1',
+  },
 });
 
-export const newAuthMeApi = () => setApiAxios.get(`auth/me`).then(response => response.data);
-    // axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {withCredentials: true })
-    //     .then(response => {
-    //
-    //         if (response.data.resultCode===0){
-    //             let {id,email,login } = response.data.data
-    //             this.props.setAuthReducer(id,email,login)
-    //         }
-    //
-    //     })
+export const newAuthMeApi = () =>
+  setApiAxios.get(`auth/me`).then(response => response.data);
+// axios.get(`https://social-network
+// .samuraijs.com/api/1.0/auth/me`, {withCredentials: true })
+//     .then(response => {
+//
+//         if (response.data.resultCode===0){
+//             let {id,email,login } = response.data.data
+//             this.props.setAuthReducer(id,email,login)
+//         }
+//
+//     })
 
-export const newProfileApi = (userId) => setApiAxios.get( `Profile/`+ userId)
-        // `https://social-network.samuraijs.com/api/1.0/Profile/`+ userId,
-        // {withCredentials:true})
-        // .then(response => {
-        //     this.props.setProf(response.data)
-        //
-        // })
+export const newProfileApi = userId => setApiAxios.get(`Profile/${userId}`);
+// `https://social-network.samuraijs.com/api/1.0/Profile/`+ userId,
+// {withCredentials:true})
+// .then(response => {
+//     this.props.setProf(response.data)
+//
+// })
 
-export const newDelUnfollow = (userId) => setApiAxios.delete(`follow/${userId}`)
-//     axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,
+export const newDelUnfollow = userId => setApiAxios.delete(`follow/${userId}`);
+//     axios.delete(`https://social-network
+//     .samuraijs.com/api/1.0/follow/${u.id}`,
 //         {
 //             withCredentials: true,
 //             headers: {
@@ -37,22 +39,25 @@ export const newDelUnfollow = (userId) => setApiAxios.delete(`follow/${userId}`)
 //             }
 // })
 
-export const newPostFollow = (userId) => setApiAxios.post(`follow/${userId}`)
-    // axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{},
-    //     {
-    //         withCredentials: true,
-    //         headers:{
-    //             "API-KEY": "6ca7206a-79cd-4b75-a7a8-fe4c71b43bb1"
-    //         }
-    //
-    //     })
+export const newPostFollow = userId => setApiAxios.post(`follow/${userId}`);
+// axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{},
+//     {
+//         withCredentials: true,
+//         headers:{
+//             "API-KEY": "6ca7206a-79cd-4b75-a7a8-fe4c71b43bb1"
+//         }
+//
+//     })
 
 // export const settingApi = {
 //
 //      setGetPage (pageSizeSet,currentPageSet) {
-//          return setApiAxios.get(`users?count=${pageSizeSet}&page=${currentPageSet}`)
-//        // axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSizeSet}
-//        //  &page=${this.props.currentPageSet}`,{withCredentials:true}).then(response => {
+//          return setApiAxios.get(`users?count=
+//          ${pageSizeSet}&page=${currentPageSet}`)
+//        // axios.get(`https://social-network
+//        .samuraijs.com/api/1.0/users?count=${this.props.pageSizeSet}
+//        //  &page=${this.props.currentPageSet}`,
+//        {withCredentials:true}).then(response => {
 //        //
 //        //     this.props.setIsLoad(false)
 //        //     this.props.settingAddUser(response.data.items)
@@ -63,8 +68,10 @@ export const newPostFollow = (userId) => setApiAxios.post(`follow/${userId}`)
 //    },
 //
 //      setGetUsers(pageSizeSet,currentPageSet){
-//        return setApiAxios.get(`users?count=${pageSizeSet}&page=${currentPageSet}`)
-//         // axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSizeSet}
+//        return setApiAxios.get(`users?
+//        count=${pageSizeSet}&page=${currentPageSet}`)
+//         // axios.get(`https://social-network.samuraijs
+//         .com/api/1.0/users?count=${this.props.pageSizeSet}
 //         // &page=${currentPageSet}`,{withCredentials:true })
 //     }
 //
