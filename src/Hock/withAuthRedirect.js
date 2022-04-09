@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -8,8 +8,9 @@ const mapStateToPropsRedirect = ({ auth: { isAuth } }) => ({
 });
 
 export const withAuthRedirect = Component => {
-  const AuthRedirectComponent = ({ ...props }) => {
-    // if (!isAuth) return <Redirect to="/Login" />;
+  // if (!isAuth) return <Redirect to="/Login" />;
+  const AuthRedirectComponent = (isAuth, props) => {
+    if (!isAuth) return <Redirect to="/Login" />;
     return <Component {...props} />;
   };
   // const mapStateToPropsRedirect = state => ({
