@@ -38,7 +38,7 @@ const PathDialogContainer = React.lazy(() => import('./PathPages/PathPages'));
 const PathProfileContainer = React.lazy(() => import('./PathPages/PathPages'));
 const PathUserContainer = React.lazy(() => import('./PathPages/PathPages'));
 
-const App = ({ initialized }) => {
+export const App = ({ initialized }) => {
   // componentDidMount(props) {
   //     this.props.initializeApp()
   // }

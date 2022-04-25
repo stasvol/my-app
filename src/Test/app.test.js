@@ -1,10 +1,11 @@
-import React from "react";
+import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from '../src/App';
-import MyApp from "../src/App";
+// eslint-disable-next-line import/named
+import { App } from '../App';
+// import MyApp from '../MyApp';
 
 test('renders learn react link', () => {
-  render(<App  />);
+  render(<App />);
   const linkElement = screen.getByText(/learn react/i);
   expect(linkElement).toBeInTheDocument();
 });
